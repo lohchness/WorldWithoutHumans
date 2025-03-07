@@ -1,35 +1,31 @@
 extends CharacterBody2D
 
-const SPEED = 250.0
-const JUMP_VELOCITY = -150.0
+var speed = 250
+var accel = 25
 
 var battery: float = 100.0
 var health: float = 100.0
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var direction : Vector2
+
+signal gameover
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		#$JumpSfx.play()
-	
-	var direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
-		#$AnimatedSprite2D.play("run")
-		#if direction == -1:
-			#$AnimatedSprite2D.flip_h = true
-		#else:
-			#$AnimatedSprite2D.flip_h = false
-	else:
-		#$AnimatedSprite2D.play("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED / 2)
-
-	#if not is_on_floor():
-		#$AnimatedSprite2D.play("jump")
-
+	direction = Input.get_vector("left", "right", "up", "down")
+	velocity.x = move_toward(velocity.x, speed * direction.x, accel)
+	velocity.y = move_toward(velocity.y, speed * direction.y, accel)
 	move_and_slide()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fire_laser"):
+		var areas = $Marker/Area2D.get_overlapping_areas()
+		print(len(areas))
+		for i in areas:
+			i.destroy()
+
+func damage(amount: float) -> void:
+	health -= amount
+	if health <= 0:
+		gameover.emit()
