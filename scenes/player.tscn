@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://054y5p86va5t"]
+[gd_scene load_steps=6 format=3 uid="uid://054y5p86va5t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nibr2"]
 [ext_resource type="Texture2D" uid="uid://chxee8j1ildeq" path="res://player.png" id="2_vo2l8"]
+[ext_resource type="Texture2D" uid="uid://bt0h0wcin8nhk" path="res://sprites/marker.png" id="4_023kk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi3nh"]
 size = Vector2(46, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwctc"]
+size = Vector2(60, 16)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nibr2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Main ship" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_vo2l8")
 
@@ -21,3 +25,15 @@ shape = SubResource("RectangleShape2D_yi3nh")
 position_smoothing_enabled = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+
+[node name="Marker" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 82)
+texture = ExtResource("4_023kk")
+
+[node name="Area2D" type="Area2D" parent="Marker"]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker/Area2D"]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_rwctc")
