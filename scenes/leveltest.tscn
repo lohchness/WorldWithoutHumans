@@ -1,23 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpp7u0l3tqwhb"]
 
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="1_k27sb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qw06"]
-size = Vector2(653.5, 57)
+[ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="2_uijy8"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(577.25, 551)
-shape = SubResource("RectangleShape2D_2qw06")
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = 257.0
-offset_top = 524.0
-offset_right = 896.0
-offset_bottom = 564.0
-
 [node name="Player" parent="." instance=ExtResource("1_k27sb")]
-position = Vector2(563, 427)
+position = Vector2(805, 434)
+
+[node name="Building" parent="." instance=ExtResource("2_uijy8")]
+position = Vector2(761, 514)
+
+[node name="Building2" parent="." instance=ExtResource("2_uijy8")]
+position = Vector2(890, 515)
