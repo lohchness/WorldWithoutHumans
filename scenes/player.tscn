@@ -10,7 +10,7 @@ size = Vector2(46, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwctc"]
 size = Vector2(60, 16)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_nibr2")
 
 [node name="Main ship" type="Sprite2D" parent="."]
