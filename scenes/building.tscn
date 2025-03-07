@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm3weibbxoa3"]
+
+[ext_resource type="Script" path="res://scripts/building.gd" id="1_hftu1"]
+[ext_resource type="Texture2D" uid="uid://kxyki4t44k6h" path="res://sprites/Building1.png" id="2_xelpa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ueoa"]
+size = Vector2(39, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3drr"]
+size = Vector2(57, 33)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_hftu1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xelpa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-27.5, 32.5)
+shape = SubResource("RectangleShape2D_3ueoa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(26.5, 35.5)
+shape = SubResource("RectangleShape2D_n3drr")
