@@ -1,12 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://bym6dwufhuqxr"]
+[gd_scene load_steps=15 format=3 uid="uid://bym6dwufhuqxr"]
 
-[ext_resource type="Texture2D" uid="uid://c5jdhx2iyptdv" path="res://sprites/Boss.png" id="1_seasx"]
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_wjuuk"]
+[ext_resource type="Texture2D" uid="uid://3onsnrnb7xe4" path="res://sprites/Boss/Head.png" id="2_sydfv"]
+[ext_resource type="Texture2D" uid="uid://bhvm1xpkb2m66" path="res://sprites/Boss/Right Arm.png" id="3_8c0ko"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_sux2h"]
+[ext_resource type="Texture2D" uid="uid://dirkxsvgetf7u" path="res://sprites/Boss/Torso and Legs.png" id="4_4jayd"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_5m5dw"]
+[ext_resource type="Texture2D" uid="uid://m250kbb4w3l1" path="res://sprites/Boss/Left Arm.png" id="4_x38cb"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_vdsfw"]
+[ext_resource type="Texture2D" uid="uid://ci72h6nmwt0p4" path="res://sprites/Boss/Sleep.png" id="6_mfqff"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_u1uje"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="7_wmbb6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfav3"]
+radius = 166.027
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd64j"]
 size = Vector2(60, 58)
@@ -18,14 +25,38 @@ size = Vector2(45, 60)
 collision_layer = 128
 script = ExtResource("1_wjuuk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_seasx")
+[node name="Body Sprites" type="Node2D" parent="."]
+
+[node name="Head" type="Sprite2D" parent="Body Sprites"]
+texture = ExtResource("2_sydfv")
+
+[node name="Right Arm" type="Sprite2D" parent="Body Sprites"]
+texture = ExtResource("3_8c0ko")
+
+[node name="Torso and Legs" type="Sprite2D" parent="Body Sprites"]
+texture = ExtResource("4_4jayd")
+
+[node name="Left Arm" type="Sprite2D" parent="Body Sprites"]
+texture = ExtResource("4_x38cb")
+
+[node name="Face" type="Sprite2D" parent="Body Sprites"]
+texture = ExtResource("6_mfqff")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Player Detect" type="Area2D" parent="Areas"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Player Detect"]
+shape = SubResource("CircleShape2D_lfav3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-4, -29)
 shape = SubResource("RectangleShape2D_wd64j")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-8.5, 31)
 shape = SubResource("RectangleShape2D_d1y24")
 
@@ -55,11 +86,16 @@ script = ExtResource("5_vdsfw")
 [node name="On Detect Finish" type="Node" parent="PhaseStateChart/Phases/Phase 0/Player Detected"]
 script = ExtResource("6_u1uje")
 to = NodePath("../../../Phase 1")
-event = &"on_detect_finish"
-delay_in_seconds = "0.0"
+delay_in_seconds = "3.0"
 
 [node name="Phase 1" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("7_wmbb6")
+
+[node name="On Phase 1 Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Phase 2")
+event = &"on_phase_1_finish"
+delay_in_seconds = "0.0"
 
 [node name="Movement" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
 script = ExtResource("4_5m5dw")
@@ -116,3 +152,9 @@ delay_in_seconds = "0.0"
 
 [node name="Phase 2" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
+
+[connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 0/Player Detected" to="." method="_on_player_detected_state_entered"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 1" to="." method="_on_phase_1_state_entered"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Movement/Walk" to="." method="_on_walk_state_physics_processing"]
