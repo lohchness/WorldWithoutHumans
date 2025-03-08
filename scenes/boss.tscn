@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bym6dwufhuqxr"]
+[gd_scene load_steps=14 format=3 uid="uid://bym6dwufhuqxr"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_wjuuk"]
 [ext_resource type="Texture2D" uid="uid://3onsnrnb7xe4" path="res://sprites/Boss/Head.png" id="2_sydfv"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_vdsfw"]
 [ext_resource type="Texture2D" uid="uid://ci72h6nmwt0p4" path="res://sprites/Boss/Sleep.png" id="6_mfqff"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_u1uje"]
-[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="7_wmbb6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfav3"]
 radius = 166.027
@@ -65,7 +64,7 @@ script = ExtResource("3_sux2h")
 
 [node name="Phases" type="Node" parent="PhaseStateChart"]
 script = ExtResource("4_5m5dw")
-initial_state = NodePath("Phase 0")
+initial_state = NodePath("Phase 1")
 
 [node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
@@ -89,65 +88,30 @@ to = NodePath("../../../Phase 1")
 delay_in_seconds = "3.0"
 
 [node name="Phase 1" type="Node" parent="PhaseStateChart/Phases"]
-script = ExtResource("7_wmbb6")
-
-[node name="On Phase 1 Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
-script = ExtResource("6_u1uje")
-to = NodePath("../../Phase 2")
-event = &"on_phase_1_finish"
-delay_in_seconds = "0.0"
-
-[node name="Movement" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
 script = ExtResource("4_5m5dw")
 initial_state = NodePath("Walk")
 
-[node name="Walk" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement"]
+[node name="Walk" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
 script = ExtResource("5_vdsfw")
 
-[node name="On Attack" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement/Walk"]
+[node name="On Start Priming" type="Node" parent="PhaseStateChart/Phases/Phase 1/Walk"]
 script = ExtResource("6_u1uje")
 to = NodePath("../../Stationary")
 event = &"on_attack"
 delay_in_seconds = "0.0"
 
-[node name="Stationary" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement"]
+[node name="Stationary" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
 script = ExtResource("5_vdsfw")
 
-[node name="On Attack Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement/Stationary"]
+[node name="On Finish Priming" type="Node" parent="PhaseStateChart/Phases/Phase 1/Stationary"]
 script = ExtResource("6_u1uje")
 to = NodePath("../../Walk")
-event = &"on_attack_finish"
-delay_in_seconds = "0.0"
+delay_in_seconds = "0.5"
 
-[node name="Combat" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
-script = ExtResource("4_5m5dw")
-initial_state = NodePath("ArtilleryCooldown")
-
-[node name="ArtilleryCooldown" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat"]
-script = ExtResource("5_vdsfw")
-
-[node name="On Cooldown Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat/ArtilleryCooldown"]
+[node name="On Phase 1 Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
 script = ExtResource("6_u1uje")
-to = NodePath("../../ArtilleryIdle")
-event = &"on_cooldown_finish"
-delay_in_seconds = "0.0"
-
-[node name="ArtilleryIdle" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat"]
-script = ExtResource("5_vdsfw")
-
-[node name="On Artillery Attack" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat/ArtilleryIdle"]
-script = ExtResource("6_u1uje")
-to = NodePath("../../ArtilleryAttack")
-event = &"on_artillery_attack"
-delay_in_seconds = "0.0"
-
-[node name="ArtilleryAttack" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat"]
-script = ExtResource("5_vdsfw")
-
-[node name="On Artillery Attack Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat/ArtilleryAttack"]
-script = ExtResource("6_u1uje")
-to = NodePath("../../ArtilleryCooldown")
-event = &"on_artillery_attack_finish"
+to = NodePath("../../Phase 2")
+event = &"on_phase_1_finish"
 delay_in_seconds = "0.0"
 
 [node name="Phase 2" type="Node" parent="PhaseStateChart/Phases"]
@@ -157,4 +121,6 @@ script = ExtResource("4_5m5dw")
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 0/Player Detected" to="." method="_on_player_detected_state_entered"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 1" to="." method="_on_phase_1_state_entered"]
-[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Movement/Walk" to="." method="_on_walk_state_physics_processing"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Walk" to="." method="_on_walk_state_physics_processing"]
+[connection signal="state_exited" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_exited"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_physics_processing"]

@@ -22,6 +22,8 @@ shape = SubResource("RectangleShape2D_i2kj3")
 
 [node name="ExplodeTimer" type="Timer" parent="."]
 wait_time = 0.5
+autostart = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_explode_radius_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_explode_radius_body_exited"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
