@@ -1,17 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdr7mqsc03qf0"]
+[gd_scene load_steps=4 format=3 uid="uid://cdr7mqsc03qf0"]
 
+[ext_resource type="Script" path="res://scripts/homing_missile.gd" id="1_1f2li"]
 [ext_resource type="Texture2D" uid="uid://dmaqiak23n0ai" path="res://sprites/HomingMissile.png" id="1_a7k3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6j8ie"]
 size = Vector2(5, 25)
 
 [node name="HomingMissile" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 17
+script = ExtResource("1_1f2li")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5, 15)
+position = Vector2(2, -2)
+rotation = 1.5708
 scale = Vector2(5, 5)
 texture = ExtResource("1_a7k3q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.5, 12.5)
+position = Vector2(5, 0)
+rotation = 1.5708
 shape = SubResource("RectangleShape2D_6j8ie")
