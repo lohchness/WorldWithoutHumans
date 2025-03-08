@@ -10,7 +10,7 @@ size = Vector2(39, 49)
 size = Vector2(57, 33)
 
 [node name="Area2D" type="Area2D"]
-collision_layer = 8
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_hftu1")
 
