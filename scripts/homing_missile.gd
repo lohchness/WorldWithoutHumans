@@ -1,12 +1,17 @@
 extends CharacterBody2D
 
-@export var speed: float = randi_range(150, 250)
-@export var rotation_speed: float = 2.0
-@export var max_lifetime: float = 50.0
-@export var explosion_scene: PackedScene
-@export var damage: float = 3.0
-@export var seeking_enabled: bool = true
-@export var seeking_delay: float = randf_range(0.3, 1.0)
+var speed: float = randi_range(150, 250)
+var orig_speed
+var max_speed = 250
+
+var rotation_speed: float = 2.0
+
+
+var max_lifetime: float = 50.0
+var explosion_scene: PackedScene
+var damage: float = 3.0
+var seeking_enabled: bool = true
+var seeking_delay: float = randf_range(0.3, 1.0)
 
 var target: Node2D = null
 var lifetime: float = 0.0
@@ -17,7 +22,9 @@ func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 	# Start with a slight delay before seeking
 	seeking_timer = seeking_delay
+	
 	rotation = randf_range(0, 2*PI)
+	orig_speed = speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -30,6 +37,15 @@ func _physics_process(delta: float) -> void:
 	# Update seeking timer
 	if seeking_timer > 0:
 		seeking_timer -= delta
+	
+	# Faster rotation speed the closer it is to the player
+	if global_position.distance_to(target.global_position) < 150:
+		rotation_speed = 4
+		speed = max_speed
+		print("In radius")
+	else:
+		rotation_speed = 2
+		speed = orig_speed
 	
 	# Move forward
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -47,6 +63,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# Check for collisions
+	## TODO: Sometimes missiles that collide with each other all dont explode
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
