@@ -17,6 +17,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="ExplodeRadius" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplodeRadius"]
 shape = SubResource("CircleShape2D_0tc3v")
