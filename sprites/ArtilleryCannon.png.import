@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l7yg0dmw43rj"
-path="res://.godot/imported/Artillery.png-7f1346e0489f841e8941c9f6b56fbcb5.ctex"
+uid="uid://c0bhwp402a3xc"
+path="res://.godot/imported/ArtilleryCannon.png-1be726d0c5d4c1719b4bddd16877bd83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Artillery.png"
-dest_files=["res://.godot/imported/Artillery.png-7f1346e0489f841e8941c9f6b56fbcb5.ctex"]
+source_file="res://sprites/ArtilleryCannon.png"
+dest_files=["res://.godot/imported/ArtilleryCannon.png-1be726d0c5d4c1719b4bddd16877bd83.ctex"]
 
 [params]
 
