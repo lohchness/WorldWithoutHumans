@@ -3,8 +3,13 @@ extends CharacterBody2D
 const PHASE_1_SPEED: int = 70
 const PHASE_1_ACCEL: int = 10
 
+const PHASE_2_SPEED: int = 130
+const PHASE_2_ACCEL: int = 20
+
 var speed: float
 var accel: float
+
+var health: float = 100.0
 
 @onready var phases_sc: StateChart = $PhaseStateChart
 
@@ -66,3 +71,14 @@ func _on_stationary_state_exited() -> void:
 	var s: Node2D = big_warning.instantiate()
 	s.global_position = target.global_position + target.velocity / 3
 	get_tree().root.add_child(s)
+
+func _on_phase_1_state_physics_processing(delta: float) -> void:
+	if health <= 50.0:
+		phases_sc.send_event("on_phase_1_finish")
+
+## PHASE 2
+
+func _on_phase_2_state_entered() -> void:
+	speed = PHASE_2_SPEED
+	accel = PHASE_2_ACCEL
+	face_sprite.texture = annoyed_face
