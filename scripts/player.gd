@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 250
-var accel = 25
+var accel = 15
 
 var battery: float = 100.0
 var health: float = 100.0

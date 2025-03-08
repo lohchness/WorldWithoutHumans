@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if move_and_slide():
 		target.damage(5)
 		queue_free()
-	
+
 
 func start_firing():
 	has_fired = true
