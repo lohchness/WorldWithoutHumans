@@ -27,5 +27,7 @@ func _input(event: InputEvent) -> void:
 
 func damage(amount: float) -> void:
 	health -= amount
+	print("Took " + str(amount) + " damage. Health remaining: " + str(health))
+	
 	if health <= 0:
 		gameover.emit()
