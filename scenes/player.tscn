@@ -44,6 +44,7 @@ position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_rwctc")
 
 [node name="BeamWeapon" type="Node2D" parent="."]
+visible = false
 
 [node name="BeamSprite" type="Sprite2D" parent="BeamWeapon"]
 position = Vector2(0, 51)
@@ -75,7 +76,6 @@ script = ExtResource("8_ii2tu")
 [node name="On Finish Attack" type="Node" parent="WeaponStateChart/Weapons/A1/A1 Attacking"]
 script = ExtResource("9_4eeg8")
 to = NodePath("../../A1 Cooldown")
-event = &"on_a1_finish_attack"
 delay_in_seconds = "1.0"
 
 [node name="A1 Cooldown" type="Node" parent="WeaponStateChart/Weapons/A1"]
@@ -84,7 +84,6 @@ script = ExtResource("8_ii2tu")
 [node name="On Cooldown Finish" type="Node" parent="WeaponStateChart/Weapons/A1/A1 Cooldown"]
 script = ExtResource("9_4eeg8")
 to = NodePath("../../A1 Ready")
-event = &"on_a1_cooldown_finish"
 delay_in_seconds = "5.0"
 
 [node name="A2" type="Node" parent="WeaponStateChart/Weapons"]
@@ -98,3 +97,5 @@ script = ExtResource("8_ii2tu")
 script = ExtResource("8_ii2tu")
 
 [connection signal="state_entered" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_entered"]
+[connection signal="state_exited" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_exited"]
+[connection signal="state_physics_processing" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_physics_processing"]
