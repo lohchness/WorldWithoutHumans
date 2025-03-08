@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bym6dwufhuqxr"]
+[gd_scene load_steps=16 format=3 uid="uid://bym6dwufhuqxr"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_wjuuk"]
 [ext_resource type="Texture2D" uid="uid://3onsnrnb7xe4" path="res://sprites/Boss/Head.png" id="2_sydfv"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_vdsfw"]
 [ext_resource type="Texture2D" uid="uid://ci72h6nmwt0p4" path="res://sprites/Boss/Sleep.png" id="6_mfqff"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_u1uje"]
+[ext_resource type="Texture2D" uid="uid://b2fqffsvy5wds" path="res://sprites/Boss/LaserWindup.png" id="7_aljyp"]
+[ext_resource type="Texture2D" uid="uid://bhq32k8rwgj84" path="res://sprites/Boss/LaserActual.png" id="8_wgtvn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfav3"]
 radius = 166.027
@@ -42,12 +44,81 @@ texture = ExtResource("4_x38cb")
 texture = ExtResource("6_mfqff")
 
 [node name="Areas" type="Node2D" parent="."]
+visible = false
 
 [node name="Player Detect" type="Area2D" parent="Areas"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Player Detect"]
 shape = SubResource("CircleShape2D_lfav3")
+
+[node name="LaserBeam" type="Node2D" parent="."]
+
+[node name="LaserBeamWindup" type="Node2D" parent="LaserBeam"]
+
+[node name="Arm1" type="Node2D" parent="LaserBeam/LaserBeamWindup"]
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamWindup/Arm1"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm2" type="Node2D" parent="LaserBeam/LaserBeamWindup"]
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamWindup/Arm2"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm3" type="Node2D" parent="LaserBeam/LaserBeamWindup"]
+rotation = -3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamWindup/Arm3"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm4" type="Node2D" parent="LaserBeam/LaserBeamWindup"]
+rotation = -1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamWindup/Arm4"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="LaserBeamActual" type="Node2D" parent="LaserBeam"]
+
+[node name="Arm1" type="Node2D" parent="LaserBeam/LaserBeamActual"]
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamActual/Arm1"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm2" type="Node2D" parent="LaserBeam/LaserBeamActual"]
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamActual/Arm2"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm3" type="Node2D" parent="LaserBeam/LaserBeamActual"]
+rotation = 3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamActual/Arm3"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm4" type="Node2D" parent="LaserBeam/LaserBeamActual"]
+rotation = 4.71239
+
+[node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamActual/Arm4"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -116,11 +187,17 @@ delay_in_seconds = "0.0"
 
 [node name="Phase 2" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
+initial_state = NodePath("Brisk")
+
+[node name="Brisk" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+script = ExtResource("4_5m5dw")
 
 [connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 0/Player Detected" to="." method="_on_player_detected_state_entered"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 1" to="." method="_on_phase_1_state_entered"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1" to="." method="_on_phase_1_state_physics_processing"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Walk" to="." method="_on_walk_state_physics_processing"]
 [connection signal="state_exited" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_entered"]
