@@ -37,6 +37,7 @@ position = Vector2(0, 82)
 texture = ExtResource("4_023kk")
 
 [node name="Area2D" type="Area2D" parent="Marker"]
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker/Area2D"]
