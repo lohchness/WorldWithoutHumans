@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://qpxa2u48obbt"]
+[gd_scene load_steps=4 format=3 uid="uid://qpxa2u48obbt"]
 
+[ext_resource type="Script" path="res://scripts/warning.gd" id="1_ba1ic"]
 [ext_resource type="Texture2D" uid="uid://dwnqf7l0ansim" path="res://sprites/Warning.png" id="1_fxfnm"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tc3v"]
+radius = 20.0
+
 [node name="Warning" type="Node2D"]
+script = ExtResource("1_ba1ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fxfnm")
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="ExplodeRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplodeRadius"]
+shape = SubResource("CircleShape2D_0tc3v")
+
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
+[connection signal="body_entered" from="ExplodeRadius" to="." method="_on_explode_radius_body_entered"]
+[connection signal="body_exited" from="ExplodeRadius" to="." method="_on_explode_radius_body_exited"]
