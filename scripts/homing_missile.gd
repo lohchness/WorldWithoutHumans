@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 var speed: float = randi_range(150, 250)
 var orig_speed
-var max_speed = 250
+var max_speed = 300
 
 var rotation_speed: float = 2.0
 
 
-var max_lifetime: float = 50.0
+var max_lifetime: float = 6.5
 var explosion_scene: PackedScene
 var damage: float = 3.0
 var seeking_enabled: bool = true
@@ -16,6 +16,8 @@ var seeking_delay: float = randf_range(0.3, 1.0)
 var target: Node2D = null
 var lifetime: float = 0.0
 var seeking_timer: float = 0.0
+
+var immune_timer = 1.0 # Time immune to itself
 
 # Called when the node enters the scene tree for the first time
 func _ready() -> void:
@@ -42,7 +44,6 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(target.global_position) < 150:
 		rotation_speed = 4
 		speed = max_speed
-		print("In radius")
 	else:
 		rotation_speed = 2
 		speed = orig_speed
@@ -64,15 +65,21 @@ func _physics_process(delta: float) -> void:
 	
 	# Check for collisions
 	## TODO: Sometimes missiles that collide with each other all dont explode
+	
+	immune_timer -= delta
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		
 		if collider.has_method("damage"):
 			collider.damage(damage)
+			explode()
+			return
 		
-		explode()
-		return
+		# Explode itself 
+		if immune_timer < 0:
+			explode()
+			return
 
 # Set the missile's target
 func set_target(new_target: Node2D) -> void:
