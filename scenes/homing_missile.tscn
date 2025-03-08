@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdr7mqsc03qf0"]
+
+[ext_resource type="Texture2D" uid="uid://dmaqiak23n0ai" path="res://sprites/HomingMissile.png" id="1_a7k3q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j8ie"]
+size = Vector2(5, 25)
+
+[node name="HomingMissile" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, 15)
+scale = Vector2(5, 5)
+texture = ExtResource("1_a7k3q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 12.5)
+shape = SubResource("RectangleShape2D_6j8ie")
