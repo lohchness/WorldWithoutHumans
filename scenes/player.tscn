@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://054y5p86va5t"]
+[gd_scene load_steps=11 format=3 uid="uid://054y5p86va5t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nibr2"]
 [ext_resource type="Texture2D" uid="uid://chxee8j1ildeq" path="res://player.png" id="2_vo2l8"]
 [ext_resource type="Texture2D" uid="uid://bt0h0wcin8nhk" path="res://sprites/marker.png" id="4_023kk"]
+[ext_resource type="Texture2D" uid="uid://bjerxy5vxux8s" path="res://sprites/Beam.png" id="4_fycvf"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_hfjrv"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="6_04kif"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_tkxti"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_ii2tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi3nh"]
 size = Vector2(46, 32)
@@ -13,6 +18,11 @@ size = Vector2(60, 16)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_nibr2")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 51)
+scale = Vector2(2.515, 1.665)
+texture = ExtResource("4_fycvf")
+
 [node name="Main ship" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_vo2l8")
@@ -22,6 +32,7 @@ position = Vector2(3, 14)
 shape = SubResource("RectangleShape2D_yi3nh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.375, 1.375)
 position_smoothing_enabled = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -37,3 +48,32 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker/Area2D"]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_rwctc")
+
+[node name="WeaponStateChart" type="Node" parent="."]
+script = ExtResource("5_hfjrv")
+
+[node name="Weapons" type="Node" parent="WeaponStateChart"]
+script = ExtResource("6_04kif")
+
+[node name="A1" type="Node" parent="WeaponStateChart/Weapons"]
+script = ExtResource("7_tkxti")
+initial_state = NodePath("A1 Ready")
+
+[node name="A1 Ready" type="Node" parent="WeaponStateChart/Weapons/A1"]
+script = ExtResource("8_ii2tu")
+
+[node name="A1 Attacking" type="Node" parent="WeaponStateChart/Weapons/A1"]
+script = ExtResource("8_ii2tu")
+
+[node name="A1 Cooldown" type="Node" parent="WeaponStateChart/Weapons/A1"]
+script = ExtResource("8_ii2tu")
+
+[node name="A2" type="Node" parent="WeaponStateChart/Weapons"]
+script = ExtResource("7_tkxti")
+initial_state = NodePath("A2 Ready")
+
+[node name="A2 Ready" type="Node" parent="WeaponStateChart/Weapons/A2"]
+script = ExtResource("8_ii2tu")
+
+[node name="A2 Cooldown" type="Node" parent="WeaponStateChart/Weapons/A2"]
+script = ExtResource("8_ii2tu")
