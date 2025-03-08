@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpp7u0l3tqwhb"]
+[gd_scene load_steps=5 format=3 uid="uid://dpp7u0l3tqwhb"]
 
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="1_k27sb"]
 [ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="2_uijy8"]
+[ext_resource type="PackedScene" uid="uid://lcqujtpkr4ni" path="res://scenes/fighter_jets.tscn" id="3_igvcb"]
 [ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="3_u2smd"]
 
 [node name="Node2D" type="Node2D"]
@@ -17,3 +18,12 @@ position = Vector2(890, 515)
 
 [node name="Artillery" parent="." instance=ExtResource("3_u2smd")]
 position = Vector2(633, 438)
+
+[node name="Fighter Jets" parent="." instance=ExtResource("3_igvcb")]
+position = Vector2(396, 1357)
+
+[node name="Fighter Jets2" parent="." instance=ExtResource("3_igvcb")]
+position = Vector2(516, 318)
+
+[node name="Fighter Jets3" parent="." instance=ExtResource("3_igvcb")]
+position = Vector2(2706, 190)
