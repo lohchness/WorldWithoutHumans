@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://054y5p86va5t"]
+[gd_scene load_steps=12 format=3 uid="uid://054y5p86va5t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nibr2"]
 [ext_resource type="Texture2D" uid="uid://chxee8j1ildeq" path="res://player.png" id="2_vo2l8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="6_04kif"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_tkxti"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_ii2tu"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_4eeg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi3nh"]
 size = Vector2(46, 32)
@@ -18,24 +19,17 @@ size = Vector2(60, 16)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_nibr2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 51)
-scale = Vector2(2.515, 1.665)
-texture = ExtResource("4_fycvf")
+[node name="Ship CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(3, 14)
+shape = SubResource("RectangleShape2D_yi3nh")
 
 [node name="Main ship" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_vo2l8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 14)
-shape = SubResource("RectangleShape2D_yi3nh")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.375, 1.375)
 position_smoothing_enabled = true
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 
 [node name="Marker" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -48,6 +42,13 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker/Area2D"]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_rwctc")
+
+[node name="BeamWeapon" type="Node2D" parent="."]
+
+[node name="BeamSprite" type="Sprite2D" parent="BeamWeapon"]
+position = Vector2(0, 51)
+scale = Vector2(2.515, 1.665)
+texture = ExtResource("4_fycvf")
 
 [node name="WeaponStateChart" type="Node" parent="."]
 script = ExtResource("5_hfjrv")
@@ -62,11 +63,29 @@ initial_state = NodePath("A1 Ready")
 [node name="A1 Ready" type="Node" parent="WeaponStateChart/Weapons/A1"]
 script = ExtResource("8_ii2tu")
 
+[node name="On Attack" type="Node" parent="WeaponStateChart/Weapons/A1/A1 Ready"]
+script = ExtResource("9_4eeg8")
+to = NodePath("../../A1 Attacking")
+event = &"on_a1_attack"
+delay_in_seconds = "0.0"
+
 [node name="A1 Attacking" type="Node" parent="WeaponStateChart/Weapons/A1"]
 script = ExtResource("8_ii2tu")
 
+[node name="On Finish Attack" type="Node" parent="WeaponStateChart/Weapons/A1/A1 Attacking"]
+script = ExtResource("9_4eeg8")
+to = NodePath("../../A1 Cooldown")
+event = &"on_a1_finish_attack"
+delay_in_seconds = "1.0"
+
 [node name="A1 Cooldown" type="Node" parent="WeaponStateChart/Weapons/A1"]
 script = ExtResource("8_ii2tu")
+
+[node name="On Cooldown Finish" type="Node" parent="WeaponStateChart/Weapons/A1/A1 Cooldown"]
+script = ExtResource("9_4eeg8")
+to = NodePath("../../A1 Ready")
+event = &"on_a1_cooldown_finish"
+delay_in_seconds = "5.0"
 
 [node name="A2" type="Node" parent="WeaponStateChart/Weapons"]
 script = ExtResource("7_tkxti")
@@ -77,3 +96,5 @@ script = ExtResource("8_ii2tu")
 
 [node name="A2 Cooldown" type="Node" parent="WeaponStateChart/Weapons/A2"]
 script = ExtResource("8_ii2tu")
+
+[connection signal="state_entered" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_entered"]
