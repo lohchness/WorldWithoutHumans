@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bym6dwufhuqxr"]
+[gd_scene load_steps=10 format=3 uid="uid://bym6dwufhuqxr"]
 
 [ext_resource type="Texture2D" uid="uid://c5jdhx2iyptdv" path="res://sprites/Boss.png" id="1_seasx"]
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_wjuuk"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_sux2h"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_5m5dw"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_vdsfw"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_u1uje"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="7_wmbb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd64j"]
 size = Vector2(60, 58)
@@ -23,3 +28,91 @@ shape = SubResource("RectangleShape2D_wd64j")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-8.5, 31)
 shape = SubResource("RectangleShape2D_d1y24")
+
+[node name="PhaseStateChart" type="Node" parent="."]
+script = ExtResource("3_sux2h")
+
+[node name="Phases" type="Node" parent="PhaseStateChart"]
+script = ExtResource("4_5m5dw")
+initial_state = NodePath("Phase 0")
+
+[node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
+script = ExtResource("4_5m5dw")
+initial_state = NodePath("Chilling")
+
+[node name="Chilling" type="Node" parent="PhaseStateChart/Phases/Phase 0"]
+script = ExtResource("5_vdsfw")
+
+[node name="On Detect Player" type="Node" parent="PhaseStateChart/Phases/Phase 0/Chilling"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Player Detected")
+event = &"on_detect_player"
+delay_in_seconds = "0.0"
+
+[node name="Player Detected" type="Node" parent="PhaseStateChart/Phases/Phase 0"]
+script = ExtResource("5_vdsfw")
+
+[node name="On Detect Finish" type="Node" parent="PhaseStateChart/Phases/Phase 0/Player Detected"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../../Phase 1")
+event = &"on_detect_finish"
+delay_in_seconds = "0.0"
+
+[node name="Phase 1" type="Node" parent="PhaseStateChart/Phases"]
+script = ExtResource("7_wmbb6")
+
+[node name="Movement" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
+script = ExtResource("4_5m5dw")
+initial_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement"]
+script = ExtResource("5_vdsfw")
+
+[node name="On Attack" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement/Walk"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Stationary")
+event = &"on_attack"
+delay_in_seconds = "0.0"
+
+[node name="Stationary" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement"]
+script = ExtResource("5_vdsfw")
+
+[node name="On Attack Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1/Movement/Stationary"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Walk")
+event = &"on_attack_finish"
+delay_in_seconds = "0.0"
+
+[node name="Combat" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
+script = ExtResource("4_5m5dw")
+initial_state = NodePath("ArtilleryCooldown")
+
+[node name="ArtilleryCooldown" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat"]
+script = ExtResource("5_vdsfw")
+
+[node name="On Cooldown Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat/ArtilleryCooldown"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../ArtilleryIdle")
+event = &"on_cooldown_finish"
+delay_in_seconds = "0.0"
+
+[node name="ArtilleryIdle" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat"]
+script = ExtResource("5_vdsfw")
+
+[node name="On Artillery Attack" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat/ArtilleryIdle"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../ArtilleryAttack")
+event = &"on_artillery_attack"
+delay_in_seconds = "0.0"
+
+[node name="ArtilleryAttack" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat"]
+script = ExtResource("5_vdsfw")
+
+[node name="On Artillery Attack Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1/Combat/ArtilleryAttack"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../ArtilleryCooldown")
+event = &"on_artillery_attack_finish"
+delay_in_seconds = "0.0"
+
+[node name="Phase 2" type="Node" parent="PhaseStateChart/Phases"]
+script = ExtResource("4_5m5dw")
