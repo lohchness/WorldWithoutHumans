@@ -36,6 +36,7 @@ visible = false
 texture = ExtResource("3_bpp7w")
 
 [node name="Gunfirevisible" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
