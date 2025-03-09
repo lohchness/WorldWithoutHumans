@@ -30,6 +30,7 @@ texture = ExtResource("2_vo2l8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.375, 1.375)
+process_callback = 0
 position_smoothing_enabled = true
 
 [node name="Marker" type="Sprite2D" parent="."]
