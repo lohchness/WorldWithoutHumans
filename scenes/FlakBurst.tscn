@@ -119,3 +119,5 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_ox6hl")
 animation = &"FlakBurst2"
 script = ExtResource("3_8w6ux")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
