@@ -8,7 +8,7 @@ var rotation_speed: float = 2.0
 
 
 var max_lifetime: float = 6.5
-var explosion_scene: PackedScene
+var explosion_scene: PackedScene = preload("res://scenes/ExplosionSmall.tscn")
 var damage: float = 3.0
 var seeking_enabled: bool = true
 var seeking_delay: float = randf_range(0.3, 1.0)
