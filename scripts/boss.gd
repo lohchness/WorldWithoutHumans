@@ -26,6 +26,9 @@ func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 	speed = PHASE_1_SPEED
 	accel = PHASE_1_ACCEL
+	
+	p2_laser_windup.visible = false
+	p2_laser_actual.visible = false
 
 ## PHASE 0
 
@@ -78,19 +81,22 @@ func _on_phase_1_state_physics_processing(delta: float) -> void:
 
 ## PHASE 2
 
-var dash_attack_timer: float = 0
-var current_dashes: int = 0
-var num_dashes = 3
+var p2_dash_attack_timer: float = 0
+var p2_current_dashes: int = 0
+var p2_num_dashes = 1
 
-var dash_attack_vector: Vector2
-var dash_attack_duration = 1
-var dash_attack_speed = 400
+var p2_dash_attack_vector: Vector2
+var p2_dash_attack_duration = 1
+var p2_dash_attack_speed = 400
+
+var modulate_timer = 0
+@onready var p2_laser_windup = $LaserBeam/LaserBeamWindup
+@onready var p2_laser_actual = $LaserBeam/LaserBeamActual
 
 func _on_phase_2_state_entered() -> void:
 	speed = PHASE_2_SPEED
 	accel = PHASE_2_ACCEL
 	face_sprite.texture = annoyed_face
-
 
 func _on_brisk_state_physics_processing(delta: float) -> void:
 	var dir = (target.global_position - global_position).normalized()
@@ -99,30 +105,63 @@ func _on_brisk_state_physics_processing(delta: float) -> void:
 	velocity.y = move_toward(velocity.y, speed * dir.y, accel)
 	move_and_slide()
 
-
 func _on_windup_state_entered() -> void:
 	velocity = Vector2.ZERO
+	
+	
+	# Send to Attack compound state
+	phases_sc.send_event("p2AttackWindup")
 
 func _on_windup_state_physics_processing(delta: float) -> void:
 	move_and_slide()
 
 func _on_dash_attack_state_entered() -> void:
-	dash_attack_timer = 0
-	current_dashes += 1
-	dash_attack_vector = global_position.direction_to(target.global_position)
+	
+	p2_dash_attack_timer = 0
+	p2_current_dashes += 1
+	p2_dash_attack_vector = global_position.direction_to(target.global_position)
 
 func _on_dash_attack_state_physics_processing(delta: float) -> void:
-	dash_attack_timer += delta
-	if dash_attack_timer >= dash_attack_duration:
+	p2_dash_attack_timer += delta
+	if p2_dash_attack_timer >= p2_dash_attack_duration:
 		phases_sc.send_event("on_dash_attack_finish")
 	else:
-		velocity = dash_attack_vector * roll_speed(dash_attack_timer)
+		velocity = p2_dash_attack_vector * roll_speed(p2_dash_attack_timer)
 		move_and_slide()
 
 func roll_speed(elapsed_time : float) -> float:
-	var t : float = elapsed_time / dash_attack_duration
-	return dash_attack_speed - (dash_attack_speed - 70) * t * t
+	var t : float = elapsed_time / p2_dash_attack_duration
+	return p2_dash_attack_speed - (p2_dash_attack_speed - 70) * t * t
 
 func _on_dash_attack_state_exited() -> void:
-	if current_dashes >= num_dashes:
+	if p2_current_dashes >= p2_num_dashes:
 		phases_sc.send_event("on_attack_finish")
+
+## P2 Attack
+
+func _on_p_2_attack_windup_state_entered() -> void:
+	modulate_timer = 0
+	p2_laser_windup.visible = true
+	p2_laser_windup.set("modulate", Color(1,1,1,0))
+
+func _on_p_2_attack_windup_state_physics_processing(delta: float) -> void:
+	modulate_timer += delta
+	## !!! The third parameter is transition to P2AttackActual
+	var alpha = remap(modulate_timer, 0, 1.5, 0, 1) 
+	p2_laser_windup.set("modulate", Color(1,1,1, alpha))
+
+func _on_p_2_attack_windup_state_exited() -> void:
+	p2_laser_windup.visible = false
+
+func _on_p_2_attack_actual_state_entered() -> void:
+	modulate_timer = 0
+	p2_laser_actual.visible = true
+
+func _on_p_2_attack_actual_state_physics_processing(delta: float) -> void:
+	modulate_timer += delta
+	## !!! The third parameter is transition to P2AttackIdle
+	var alpha = remap(modulate_timer, 0, 1.0, 1, 0)
+	p2_laser_actual.set("modulate", Color(1,1,1,alpha))
+
+func _on_p_2_attack_actual_state_exited() -> void:
+	p2_laser_actual.visible = false

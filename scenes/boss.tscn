@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bym6dwufhuqxr"]
+[gd_scene load_steps=17 format=3 uid="uid://bym6dwufhuqxr"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_wjuuk"]
 [ext_resource type="Texture2D" uid="uid://3onsnrnb7xe4" path="res://sprites/Boss/Head.png" id="2_sydfv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_u1uje"]
 [ext_resource type="Texture2D" uid="uid://b2fqffsvy5wds" path="res://sprites/Boss/LaserWindup.png" id="7_aljyp"]
 [ext_resource type="Texture2D" uid="uid://bhq32k8rwgj84" path="res://sprites/Boss/LaserActual.png" id="8_wgtvn"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="13_ctt1c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfav3"]
 radius = 166.027
@@ -184,44 +185,75 @@ delay_in_seconds = "0.5"
 
 [node name="On Phase 1 Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
 script = ExtResource("6_u1uje")
-to = NodePath("../../Phase 2")
 event = &"on_phase_1_finish"
 delay_in_seconds = "0.0"
 
 [node name="Phase 2" type="Node" parent="PhaseStateChart/Phases"]
+script = ExtResource("13_ctt1c")
+
+[node name="Movement" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
 script = ExtResource("4_5m5dw")
 initial_state = NodePath("Brisk")
 
-[node name="Brisk" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+[node name="Brisk" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement"]
 script = ExtResource("5_vdsfw")
 
-[node name="Transition" type="Node" parent="PhaseStateChart/Phases/Phase 2/Brisk"]
+[node name="To Windup" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement/Brisk"]
 script = ExtResource("6_u1uje")
 to = NodePath("../../Windup")
-delay_in_seconds = "2.5"
+delay_in_seconds = "4.0"
 
-[node name="Windup" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+[node name="Windup" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement"]
 script = ExtResource("5_vdsfw")
 
-[node name="To Dash Attack" type="Node" parent="PhaseStateChart/Phases/Phase 2/Windup"]
+[node name="To Dash Attack" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement/Windup"]
 script = ExtResource("6_u1uje")
 to = NodePath("../../Dash Attack")
 delay_in_seconds = ".25"
 
-[node name="Dash Attack" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+[node name="Dash Attack" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement"]
 script = ExtResource("5_vdsfw")
 
-[node name="To Wind Up" type="Node" parent="PhaseStateChart/Phases/Phase 2/Dash Attack"]
+[node name="To Wind Up" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement/Dash Attack"]
 script = ExtResource("6_u1uje")
 to = NodePath("../../Windup")
 event = &"on_dash_attack_finish"
 delay_in_seconds = "0.0"
 
-[node name="To Brisk" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+[node name="To Brisk" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement"]
 script = ExtResource("6_u1uje")
 to = NodePath("../Brisk")
 event = &"on_attack_finish"
 delay_in_seconds = "0.0"
+
+[node name="Attack" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+script = ExtResource("4_5m5dw")
+initial_state = NodePath("P2AttackIdle")
+
+[node name="P2AttackIdle" type="Node" parent="PhaseStateChart/Phases/Phase 2/Attack"]
+script = ExtResource("5_vdsfw")
+
+[node name="To P2 Attack Windup" type="Node" parent="PhaseStateChart/Phases/Phase 2/Attack/P2AttackIdle"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../P2AttackWindup")
+event = &"p2AttackWindup"
+delay_in_seconds = "0.0"
+
+[node name="P2AttackWindup" type="Node" parent="PhaseStateChart/Phases/Phase 2/Attack"]
+script = ExtResource("5_vdsfw")
+
+[node name="To P2 Attack Actual" type="Node" parent="PhaseStateChart/Phases/Phase 2/Attack/P2AttackWindup"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../P2AttackActual")
+delay_in_seconds = "1.5"
+
+[node name="P2AttackActual" type="Node" parent="PhaseStateChart/Phases/Phase 2/Attack"]
+script = ExtResource("5_vdsfw")
+
+[node name="To P2 Idle" type="Node" parent="PhaseStateChart/Phases/Phase 2/Attack/P2AttackActual"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../P2AttackIdle")
+delay_in_seconds = "1.0"
 
 [connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
@@ -232,9 +264,15 @@ delay_in_seconds = "0.0"
 [connection signal="state_exited" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_entered"]
-[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Brisk" to="." method="_on_brisk_state_physics_processing"]
-[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Windup" to="." method="_on_windup_state_entered"]
-[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Windup" to="." method="_on_windup_state_physics_processing"]
-[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Dash Attack" to="." method="_on_dash_attack_state_entered"]
-[connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2/Dash Attack" to="." method="_on_dash_attack_state_exited"]
-[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Dash Attack" to="." method="_on_dash_attack_state_physics_processing"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Movement/Brisk" to="." method="_on_brisk_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Movement/Windup" to="." method="_on_windup_state_entered"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Movement/Windup" to="." method="_on_windup_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Movement/Dash Attack" to="." method="_on_dash_attack_state_entered"]
+[connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2/Movement/Dash Attack" to="." method="_on_dash_attack_state_exited"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Movement/Dash Attack" to="." method="_on_dash_attack_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackWindup" to="." method="_on_p_2_attack_windup_state_entered"]
+[connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackWindup" to="." method="_on_p_2_attack_windup_state_exited"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackWindup" to="." method="_on_p_2_attack_windup_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackActual" to="." method="_on_p_2_attack_actual_state_entered"]
+[connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackActual" to="." method="_on_p_2_attack_actual_state_exited"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackActual" to="." method="_on_p_2_attack_actual_state_physics_processing"]
