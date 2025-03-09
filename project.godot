@@ -67,6 +67,7 @@ debug={
 2d_physics/layer_7="Enemy Artillery Projectile"
 2d_physics/layer_8="Enemy Boss"
 2d_physics/layer_9="Enemy Boss Laser"
+2d_physics/layer_10="Enemy Infantry"
 
 [rendering]
 

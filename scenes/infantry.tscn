@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c747frw0n8yce"]
+
+[ext_resource type="Script" path="res://scripts/infantry.gd" id="1_68kqu"]
+[ext_resource type="Texture2D" uid="uid://dd2ru4wpfouxr" path="res://sprites/Infantry.png" id="2_8n5d7"]
+[ext_resource type="Texture2D" uid="uid://bte1ud7olxvsx" path="res://sprites/Gunfire.png" id="3_bpp7w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvx7r"]
+size = Vector2(32, 41)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_khomy"]
+radius = 126.004
+
+[node name="Infantry" type="CharacterBody2D"]
+collision_layer = 512
+collision_mask = 4
+script = ExtResource("1_68kqu")
+
+[node name="Humans" type="Sprite2D" parent="."]
+texture = ExtResource("2_8n5d7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 10.5)
+shape = SubResource("RectangleShape2D_pvx7r")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_khomy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Gunfire" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_bpp7w")
+
+[node name="Gunfirevisible" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Gunfirevisible" to="." method="_on_gunfirevisible_timeout"]
