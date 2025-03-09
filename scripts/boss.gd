@@ -97,6 +97,7 @@ func _on_phase_2_state_entered() -> void:
 	speed = PHASE_2_SPEED
 	accel = PHASE_2_ACCEL
 	face_sprite.texture = annoyed_face
+	$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Cooldown".start()
 
 func _on_brisk_state_physics_processing(delta: float) -> void:
 	var dir = (target.global_position - global_position).normalized()
@@ -165,3 +166,23 @@ func _on_p_2_attack_actual_state_physics_processing(delta: float) -> void:
 
 func _on_p_2_attack_actual_state_exited() -> void:
 	p2_laser_actual.visible = false
+
+func _on_p_2_big_arty_fire_cooldown_timeout() -> void:
+	$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Separation".start()
+	p2_missiles_total = randi_range(1, 3)
+
+var p2_missiles_fired = 0
+var p2_missiles_total
+
+func _on_p_2_big_arty_fire_separation_timeout() -> void:
+	p2_missiles_fired += 1
+	var s: Node2D = big_warning.instantiate()
+	s.global_position = target.global_position
+	get_tree().root.add_child(s)
+	if p2_missiles_fired == p2_missiles_total:
+		$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Separation".stop()
+		p2_missiles_fired = 0
+
+
+func _on_phase_2_state_exited() -> void:
+	$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Cooldown".stop()

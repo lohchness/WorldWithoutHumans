@@ -185,6 +185,7 @@ delay_in_seconds = "0.5"
 
 [node name="On Phase 1 Finish" type="Node" parent="PhaseStateChart/Phases/Phase 1"]
 script = ExtResource("6_u1uje")
+to = NodePath("../../Phase 2")
 event = &"on_phase_1_finish"
 delay_in_seconds = "0.0"
 
@@ -201,7 +202,7 @@ script = ExtResource("5_vdsfw")
 [node name="To Windup" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement/Brisk"]
 script = ExtResource("6_u1uje")
 to = NodePath("../../Windup")
-delay_in_seconds = "4.0"
+delay_in_seconds = "6.0"
 
 [node name="Windup" type="Node" parent="PhaseStateChart/Phases/Phase 2/Movement"]
 script = ExtResource("5_vdsfw")
@@ -255,6 +256,12 @@ script = ExtResource("6_u1uje")
 to = NodePath("../../P2AttackIdle")
 delay_in_seconds = "1.0"
 
+[node name="P2 Big Arty Fire Cooldown" type="Timer" parent="PhaseStateChart/Phases/Phase 2"]
+wait_time = 8.0
+
+[node name="P2 Big Arty Fire Separation" type="Timer" parent="PhaseStateChart/Phases/Phase 2"]
+wait_time = 0.5
+
 [connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 0/Player Detected" to="." method="_on_player_detected_state_entered"]
@@ -264,6 +271,7 @@ delay_in_seconds = "1.0"
 [connection signal="state_exited" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_entered"]
+[connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Movement/Brisk" to="." method="_on_brisk_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Movement/Windup" to="." method="_on_windup_state_entered"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Movement/Windup" to="." method="_on_windup_state_physics_processing"]
@@ -276,3 +284,5 @@ delay_in_seconds = "1.0"
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackActual" to="." method="_on_p_2_attack_actual_state_entered"]
 [connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackActual" to="." method="_on_p_2_attack_actual_state_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Attack/P2AttackActual" to="." method="_on_p_2_attack_actual_state_physics_processing"]
+[connection signal="timeout" from="PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Cooldown" to="." method="_on_p_2_big_arty_fire_cooldown_timeout"]
+[connection signal="timeout" from="PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Separation" to="." method="_on_p_2_big_arty_fire_separation_timeout"]
