@@ -23,6 +23,7 @@ func _on_timer_timeout() -> void:
 	if target_acquired:
 		$Gunfire.visible = true
 		$Gunfirevisible.start()
+		target.damage(damage)
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
