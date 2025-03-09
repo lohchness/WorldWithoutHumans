@@ -112,8 +112,6 @@ func _on_brisk_state_physics_processing(delta: float) -> void:
 
 func _on_windup_state_entered() -> void:
 	velocity = Vector2.ZERO
-	
-	
 	# Send to Attack compound state
 	phases_sc.send_event("p2AttackWindup")
 
@@ -141,6 +139,7 @@ func roll_speed(elapsed_time : float) -> float:
 func _on_dash_attack_state_exited() -> void:
 	if p2_current_dashes >= p2_num_dashes:
 		phases_sc.send_event("on_attack_finish")
+		p2_current_dashes = 0
 
 ## P2 Attack
 
@@ -205,3 +204,36 @@ func _on_phase_3_state_entered() -> void:
 	speed = PHASE_3_SPEED
 	accel = PHASE_3_ACCEL
 	face_sprite.texture = angry
+
+func _on_p_3_chase_state_physics_processing(delta: float) -> void:
+	var dir = (target.global_position - global_position).normalized()
+	
+	velocity.x = move_toward(velocity.x, speed * dir.x, accel)
+	velocity.y = move_toward(velocity.y, speed * dir.y, accel)
+	move_and_slide()
+
+func _on_p_3_windup_state_entered() -> void:
+	velocity = Vector2.ZERO
+	# Send to Attack compound state
+	phases_sc.send_event("p2AttackWindup")
+
+func _on_p_3_windup_state_physics_processing(delta: float) -> void:
+	move_and_slide()
+
+func _on_p_3_dash_attack_state_entered() -> void:
+	p3_dash_attack_timer = 0
+	p3_current_dashes += 1
+	p3_dash_attack_vector = global_position.direction_to(target.global_position)
+
+func _on_p_3_dash_attack_state_physics_processing(delta: float) -> void:
+	p3_dash_attack_timer += delta
+	if p3_dash_attack_timer >= p3_dash_attack_duration:
+		phases_sc.send_event("on_dash_attack_finish")
+	else:
+		velocity = p3_dash_attack_vector * roll_speed(p3_dash_attack_timer)
+		move_and_slide()
+
+func _on_p_3_dash_attack_state_exited() -> void:
+	if p3_current_dashes >= p3_num_dashes:
+		phases_sc.send_event("on_attack_finish")
+		p3_current_dashes = 0
