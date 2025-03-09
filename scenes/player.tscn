@@ -121,6 +121,7 @@ shape = SubResource("RectangleShape2D_rwctc")
 [node name="MagnetWeapon" type="Node2D" parent="."]
 
 [node name="MagnetSprite" type="Sprite2D" parent="MagnetWeapon"]
+visible = false
 position = Vector2(0, -45)
 texture = ExtResource("8_lekca")
 

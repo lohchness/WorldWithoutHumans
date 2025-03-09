@@ -56,12 +56,15 @@ func _on_a_1_attacking_state_physics_processing(delta: float) -> void:
 		i.destroy()
 
 @onready var magnet_area = $MagnetWeapon/MagnetArea
+@onready var magnet_sprite = $MagnetWeapon/MagnetSprite
 
 func _on_a_2_attacking_state_entered() -> void:
 	magnet_area.monitoring = true
+	magnet_sprite.visible = true
 
 func _on_a_2_attacking_state_exited() -> void:
 	magnet_area.monitoring = false
+	magnet_sprite.visible = false
 
 func _on_magnet_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Infantry"):
