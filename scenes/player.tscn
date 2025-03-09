@@ -17,6 +17,7 @@ size = Vector2(46, 32)
 size = Vector2(60, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 129
 script = ExtResource("1_nibr2")
 
 [node name="Ship CollisionShape" type="CollisionShape2D" parent="."]
