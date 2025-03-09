@@ -284,6 +284,7 @@ scale = Vector2(12, 4)
 texture = ExtResource("8_wgtvn")
 
 [node name="P3_LaserHurtbox" type="Area2D" parent="P3LaserBeam"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P3LaserBeam/P3_LaserHurtbox"]
 position = Vector2(455, 0)
