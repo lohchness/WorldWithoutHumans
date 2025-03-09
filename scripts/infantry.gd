@@ -37,3 +37,6 @@ func _on_attack_range_body_exited(body: Node2D) -> void:
 
 func _on_gunfirevisible_timeout() -> void:
 	$Gunfire.visible = false
+
+func die():
+	queue_free()
