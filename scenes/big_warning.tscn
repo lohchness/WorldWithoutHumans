@@ -16,8 +16,7 @@ texture = ExtResource("1_ld3el")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1, -1)
-rotation = 0.785398
-scale = Vector2(1, 1)
+rotation = 0.785397
 shape = SubResource("RectangleShape2D_i2kj3")
 
 [node name="ExplodeTimer" type="Timer" parent="."]
