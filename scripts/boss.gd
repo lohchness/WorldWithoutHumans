@@ -237,3 +237,37 @@ func _on_p_3_dash_attack_state_exited() -> void:
 	if p3_current_dashes >= p3_num_dashes:
 		phases_sc.send_event("on_attack_finish")
 		p3_current_dashes = 0
+	
+	# Start charging laser after first dash
+	if p3_current_dashes == 1:
+		phases_sc.send_event("p3AttackWindup")
+
+@onready var p3_laser_windup = $P3LaserBeam/LaserBeamWindup
+@onready var p3_laser_actual = $P3LaserBeam/LaserBeamActual
+
+func _on_p_3_attack_windup_state_entered() -> void:
+	modulate_timer = 0
+	p3_laser_windup.visible = true
+	p3_laser_windup.set("modulate", Color(1,1,1,0))
+
+func _on_p_3_attack_windup_state_physics_processing(delta: float) -> void:
+	modulate_timer += delta
+	## !!! The third parameter is transition to P2AttackActual
+	var alpha = remap(modulate_timer, 0, 1.5, 0, 1) 
+	p3_laser_windup.set("modulate", Color(1,1,1, alpha))
+
+func _on_p_3_attack_windup_state_exited() -> void:
+	p3_laser_windup.visible = false
+
+func _on_p_3_attack_actual_state_entered() -> void:
+	modulate_timer = 0
+	p3_laser_actual.visible = true
+
+func _on_p_3_attack_actual_state_physics_processing(delta: float) -> void:
+	modulate_timer += delta
+	## !!! The third parameter is transition to P2AttackIdle
+	var alpha = remap(modulate_timer, 0, 1.0, 1, 0)
+	p3_laser_actual.set("modulate", Color(1,1,1,alpha))
+
+func _on_p_3_attack_actual_state_exited() -> void:
+	p3_laser_actual.visible = false
