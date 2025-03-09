@@ -218,6 +218,7 @@ scale = Vector2(12, 4)
 texture = ExtResource("7_aljyp")
 
 [node name="LaserBeamActual" type="Node2D" parent="P3LaserBeam"]
+visible = false
 
 [node name="Arm1" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
 
@@ -338,7 +339,7 @@ script = ExtResource("3_sux2h")
 
 [node name="Phases" type="Node" parent="PhaseStateChart"]
 script = ExtResource("4_5m5dw")
-initial_state = NodePath("Phase 2")
+initial_state = NodePath("Phase 3")
 
 [node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
