@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm3weibbxoa3"]
+[gd_scene load_steps=17 format=3 uid="uid://dm3weibbxoa3"]
 
 [ext_resource type="Script" path="res://scripts/building.gd" id="1_hftu1"]
 [ext_resource type="Texture2D" uid="uid://kxyki4t44k6h" path="res://sprites/Building1.png" id="2_xelpa"]
+[ext_resource type="Texture2D" uid="uid://c5emnx6nybdwh" path="res://sprites/Building2.png" id="3_3xiek"]
+[ext_resource type="Texture2D" uid="uid://cp0plgqlvex0i" path="res://sprites/Building3.png" id="4_tokkr"]
+[ext_resource type="Texture2D" uid="uid://dqq5caw8iw824" path="res://sprites/Building4.png" id="5_pdwqn"]
+[ext_resource type="Texture2D" uid="uid://k2icjb0u7ssf" path="res://sprites/Building5.png" id="6_nb4ex"]
+[ext_resource type="Texture2D" uid="uid://coo4mkk85m0tq" path="res://sprites/Building6.png" id="7_wpl33"]
+[ext_resource type="Texture2D" uid="uid://beopjf6oqtx" path="res://sprites/Building7.png" id="8_hphm6"]
+[ext_resource type="Texture2D" uid="uid://dhiqfg2ulf0j" path="res://sprites/Building8.png" id="9_mejdq"]
+[ext_resource type="Texture2D" uid="uid://den4xuqx2lqfx" path="res://sprites/Building9.png" id="10_g23p3"]
+[ext_resource type="Texture2D" uid="uid://cr6ej5jy1hnbx" path="res://sprites/Building10.png" id="11_0wnrq"]
+[ext_resource type="Texture2D" uid="uid://d2a3k8u2ldkfn" path="res://sprites/Building11.png" id="12_76gd2"]
+[ext_resource type="Texture2D" uid="uid://cd852tgull45i" path="res://sprites/Building12.png" id="13_16d3r"]
+[ext_resource type="Texture2D" uid="uid://di7n6fgwn4i60" path="res://sprites/Building13.png" id="14_4knkh"]
+[ext_resource type="Texture2D" uid="uid://xl22da3681t1" path="res://sprites/Building14.png" id="15_yiokn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ueoa"]
 size = Vector2(96, 48)
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" groups=["Building"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_hftu1")
+allsprites = Array[Texture]([ExtResource("2_xelpa"), ExtResource("3_3xiek"), ExtResource("4_tokkr"), ExtResource("5_pdwqn"), ExtResource("6_nb4ex"), ExtResource("7_wpl33"), ExtResource("8_hphm6"), ExtResource("9_mejdq"), ExtResource("10_g23p3"), ExtResource("11_0wnrq"), ExtResource("12_76gd2"), ExtResource("13_16d3r"), ExtResource("14_4knkh"), ExtResource("15_yiokn")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xelpa")

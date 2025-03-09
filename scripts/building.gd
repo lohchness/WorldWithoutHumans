@@ -3,6 +3,14 @@ class_name Building
 
 var explosion_scene: PackedScene = preload("res://scenes/ExplosionMedium.tscn")
 
+@onready var sprite = $Sprite2D
+
+@export var allsprites: Array[Texture] = []
+
+func _ready() -> void:
+	sprite.texture = allsprites.pick_random()
+	
+
 func destroy() -> void:
 	if explosion_scene != null:
 		var explosion = explosion_scene.instantiate()
