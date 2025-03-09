@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://rd0pyj3xnfks"]
+[gd_scene load_steps=28 format=3 uid="uid://rd0pyj3xnfks"]
 
 [ext_resource type="Texture2D" uid="uid://cytolhk22prlt" path="res://sprites/FlakBurst1.png" id="1_v2ypd"]
 [ext_resource type="Texture2D" uid="uid://bednbkqisuvp2" path="res://sprites/FlakBurst2.png" id="2_2ybhm"]
@@ -61,29 +61,37 @@ region = Rect2(320, 0, 64, 64)
 atlas = ExtResource("2_2ybhm")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d186s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_agaay"]
 atlas = ExtResource("3_ydcax")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6qln"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4mff"]
 atlas = ExtResource("3_ydcax")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dktkn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajf7k"]
 atlas = ExtResource("3_ydcax")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l81dq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcmp7"]
 atlas = ExtResource("3_ydcax")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bteoq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ty2a"]
 atlas = ExtResource("3_ydcax")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v2qcg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3em7"]
 atlas = ExtResource("3_ydcax")
 region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w6b4"]
+atlas = ExtResource("3_ydcax")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e05yc"]
+atlas = ExtResource("3_ydcax")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ox6hl"]
 animations = [{
@@ -141,22 +149,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d186s")
+"texture": SubResource("AtlasTexture_agaay")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v6qln")
+"texture": SubResource("AtlasTexture_w4mff")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dktkn")
+"texture": SubResource("AtlasTexture_ajf7k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l81dq")
+"texture": SubResource("AtlasTexture_lcmp7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bteoq")
+"texture": SubResource("AtlasTexture_4ty2a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v2qcg")
+"texture": SubResource("AtlasTexture_d3em7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w6b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e05yc")
 }],
 "loop": false,
 "name": &"FlakBurst3",
@@ -166,8 +180,6 @@ animations = [{
 [node name="FlakBurst" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ox6hl")
 animation = &"FlakBurst3"
-frame = 5
-frame_progress = 1.0
 script = ExtResource("3_8w6ux")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
