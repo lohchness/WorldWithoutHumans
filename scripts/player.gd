@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var speed = 250
-var accel = 15
+var speed = 400
+var accel = 100
 
 var battery: float = 100.0
 var health: float = 100.0
@@ -14,6 +14,8 @@ var a1_attack: bool = false
 signal gameover
 
 @onready var weapon_sc: StateChart = $WeaponStateChart
+
+@onready var marker = $Marker
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
