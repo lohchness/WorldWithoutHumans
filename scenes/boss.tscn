@@ -56,6 +56,7 @@ shape = SubResource("CircleShape2D_lfav3")
 [node name="LaserBeam" type="Node2D" parent="."]
 
 [node name="LaserBeamWindup" type="Node2D" parent="LaserBeam"]
+visible = false
 
 [node name="Arm1" type="Node2D" parent="LaserBeam/LaserBeamWindup"]
 
@@ -89,6 +90,7 @@ scale = Vector2(12, 4)
 texture = ExtResource("7_aljyp")
 
 [node name="LaserBeamActual" type="Node2D" parent="LaserBeam"]
+visible = false
 
 [node name="Arm1" type="Node2D" parent="LaserBeam/LaserBeamActual"]
 
@@ -136,7 +138,7 @@ script = ExtResource("3_sux2h")
 
 [node name="Phases" type="Node" parent="PhaseStateChart"]
 script = ExtResource("4_5m5dw")
-initial_state = NodePath("Phase 1")
+initial_state = NodePath("Phase 2")
 
 [node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
@@ -191,7 +193,35 @@ script = ExtResource("4_5m5dw")
 initial_state = NodePath("Brisk")
 
 [node name="Brisk" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
-script = ExtResource("4_5m5dw")
+script = ExtResource("5_vdsfw")
+
+[node name="Transition" type="Node" parent="PhaseStateChart/Phases/Phase 2/Brisk"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Windup")
+delay_in_seconds = "2.5"
+
+[node name="Windup" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+script = ExtResource("5_vdsfw")
+
+[node name="To Dash Attack" type="Node" parent="PhaseStateChart/Phases/Phase 2/Windup"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Dash Attack")
+delay_in_seconds = ".25"
+
+[node name="Dash Attack" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+script = ExtResource("5_vdsfw")
+
+[node name="To Wind Up" type="Node" parent="PhaseStateChart/Phases/Phase 2/Dash Attack"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Windup")
+event = &"on_dash_attack_finish"
+delay_in_seconds = "0.0"
+
+[node name="To Brisk" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+script = ExtResource("6_u1uje")
+to = NodePath("../Brisk")
+event = &"on_attack_finish"
+delay_in_seconds = "0.0"
 
 [connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
@@ -202,3 +232,9 @@ script = ExtResource("4_5m5dw")
 [connection signal="state_exited" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_entered"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Brisk" to="." method="_on_brisk_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Windup" to="." method="_on_windup_state_entered"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Windup" to="." method="_on_windup_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Dash Attack" to="." method="_on_dash_attack_state_entered"]
+[connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2/Dash Attack" to="." method="_on_dash_attack_state_exited"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Dash Attack" to="." method="_on_dash_attack_state_physics_processing"]

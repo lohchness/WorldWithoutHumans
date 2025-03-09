@@ -3,8 +3,8 @@ extends CharacterBody2D
 const PHASE_1_SPEED: int = 70
 const PHASE_1_ACCEL: int = 10
 
-const PHASE_2_SPEED: int = 130
-const PHASE_2_ACCEL: int = 20
+const PHASE_2_SPEED: int = 100
+const PHASE_2_ACCEL: int = 10
 
 var speed: float
 var accel: float
@@ -78,7 +78,51 @@ func _on_phase_1_state_physics_processing(delta: float) -> void:
 
 ## PHASE 2
 
+var dash_attack_timer: float = 0
+var current_dashes: int = 0
+var num_dashes = 3
+
+var dash_attack_vector: Vector2
+var dash_attack_duration = 1
+var dash_attack_speed = 400
+
 func _on_phase_2_state_entered() -> void:
 	speed = PHASE_2_SPEED
 	accel = PHASE_2_ACCEL
 	face_sprite.texture = annoyed_face
+
+
+func _on_brisk_state_physics_processing(delta: float) -> void:
+	var dir = (target.global_position - global_position).normalized()
+	
+	velocity.x = move_toward(velocity.x, speed * dir.x, accel)
+	velocity.y = move_toward(velocity.y, speed * dir.y, accel)
+	move_and_slide()
+
+
+func _on_windup_state_entered() -> void:
+	velocity = Vector2.ZERO
+
+func _on_windup_state_physics_processing(delta: float) -> void:
+	move_and_slide()
+
+func _on_dash_attack_state_entered() -> void:
+	dash_attack_timer = 0
+	current_dashes += 1
+	dash_attack_vector = global_position.direction_to(target.global_position)
+
+func _on_dash_attack_state_physics_processing(delta: float) -> void:
+	dash_attack_timer += delta
+	if dash_attack_timer >= dash_attack_duration:
+		phases_sc.send_event("on_dash_attack_finish")
+	else:
+		velocity = dash_attack_vector * roll_speed(dash_attack_timer)
+		move_and_slide()
+
+func roll_speed(elapsed_time : float) -> float:
+	var t : float = elapsed_time / dash_attack_duration
+	return dash_attack_speed - (dash_attack_speed - 70) * t * t
+
+func _on_dash_attack_state_exited() -> void:
+	if current_dashes >= num_dashes:
+		phases_sc.send_event("on_attack_finish")
