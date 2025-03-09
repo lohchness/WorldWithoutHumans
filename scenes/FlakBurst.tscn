@@ -180,6 +180,8 @@ animations = [{
 [node name="FlakBurst" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ox6hl")
 animation = &"FlakBurst3"
+frame = 7
+frame_progress = 1.0
 script = ExtResource("3_8w6ux")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
