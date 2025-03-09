@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://kxyki4t44k6h" path="res://sprites/Building1.png" id="2_xelpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ueoa"]
-size = Vector2(104, 60)
+size = Vector2(96, 48)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
@@ -15,7 +15,7 @@ script = ExtResource("1_hftu1")
 texture = ExtResource("2_xelpa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 30)
+position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_3ueoa")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -23,5 +23,5 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(3, 30)
+position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_3ueoa")
