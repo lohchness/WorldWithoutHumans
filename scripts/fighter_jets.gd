@@ -13,6 +13,8 @@ var num_fired = 0
 var missiles = randi_range(3, 6)
 var missile_scene: PackedScene = preload("res://scenes/homing_missile.tscn")
 
+var explosion_scene: PackedScene = preload("res://scenes/FlakBurst.tscn")
+
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 	direction = position.direction_to(target.global_position)
@@ -24,6 +26,11 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	if move_and_slide():
 		target.damage(5)
+		
+		var s = explosion_scene.instantiate()
+		s.global_position = global_position
+		get_tree().root.add_child(s)
+		
 		queue_free()
 
 
