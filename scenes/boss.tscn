@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bym6dwufhuqxr"]
+[gd_scene load_steps=18 format=3 uid="uid://bym6dwufhuqxr"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_wjuuk"]
 [ext_resource type="Texture2D" uid="uid://3onsnrnb7xe4" path="res://sprites/Boss/Head.png" id="2_sydfv"]
@@ -16,6 +16,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfav3"]
 radius = 166.027
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ar7m"]
+size = Vector2(768, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd64j"]
 size = Vector2(60, 58)
@@ -55,9 +58,9 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_lfav3")
 
 [node name="LaserBeam" type="Node2D" parent="."]
-visible = false
 
 [node name="LaserBeamWindup" type="Node2D" parent="LaserBeam"]
+visible = false
 
 [node name="Arm1" type="Node2D" parent="LaserBeam/LaserBeamWindup"]
 
@@ -122,6 +125,27 @@ rotation = 4.71239
 position = Vector2(455, 0)
 scale = Vector2(12, 4)
 texture = ExtResource("8_wgtvn")
+
+[node name="P2_LaserHurtbox" type="Area2D" parent="LaserBeam"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserBeam/P2_LaserHurtbox"]
+position = Vector2(455, 0)
+shape = SubResource("RectangleShape2D_8ar7m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LaserBeam/P2_LaserHurtbox"]
+position = Vector2(0, 455)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_8ar7m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="LaserBeam/P2_LaserHurtbox"]
+position = Vector2(-455, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_8ar7m")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="LaserBeam/P2_LaserHurtbox"]
+position = Vector2(0, -455)
+rotation = 4.71239
+shape = SubResource("RectangleShape2D_8ar7m")
 
 [node name="P3LaserBeam" type="Node2D" parent="."]
 
@@ -272,7 +296,7 @@ script = ExtResource("3_sux2h")
 
 [node name="Phases" type="Node" parent="PhaseStateChart"]
 script = ExtResource("4_5m5dw")
-initial_state = NodePath("Phase 3")
+initial_state = NodePath("Phase 2")
 
 [node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
@@ -463,6 +487,8 @@ to = NodePath("../../P3AttackIdle")
 delay_in_seconds = "1.0"
 
 [connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_entered" from="LaserBeam/P2_LaserHurtbox" to="." method="_on_p_2_laser_hurtbox_body_entered"]
+[connection signal="body_exited" from="LaserBeam/P2_LaserHurtbox" to="." method="_on_p_2_laser_hurtbox_body_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 0/Player Detected" to="." method="_on_player_detected_state_entered"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 1" to="." method="_on_phase_1_state_entered"]
