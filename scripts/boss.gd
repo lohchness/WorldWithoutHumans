@@ -4,7 +4,11 @@ const PHASE_1_SPEED: int = 70
 const PHASE_1_ACCEL: int = 10
 
 const PHASE_2_SPEED: int = 100
-const PHASE_2_ACCEL: int = 10
+const PHASE_2_ACCEL: int = 2
+
+const PHASE_3_SPEED = 150
+const PHASE_3_ACCEL = 2
+
 
 var speed: float
 var accel: float
@@ -183,6 +187,21 @@ func _on_p_2_big_arty_fire_separation_timeout() -> void:
 		$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Separation".stop()
 		p2_missiles_fired = 0
 
-
 func _on_phase_2_state_exited() -> void:
 	$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Cooldown".stop()
+
+
+## PHASE 3
+
+var p3_dash_attack_timer: float = 0
+var p3_current_dashes: int = 0
+var p3_num_dashes = 3
+
+var p3_dash_attack_vector: Vector2
+var p3_dash_attack_duration = 1
+var p3_dash_attack_speed = 400
+
+func _on_phase_3_state_entered() -> void:
+	speed = PHASE_3_SPEED
+	accel = PHASE_3_ACCEL
+	face_sprite.texture = angry
