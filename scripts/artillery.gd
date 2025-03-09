@@ -13,6 +13,7 @@ var attacks = 0
 var maxattacks = 4
 
 var warning: PackedScene = preload("res://scenes/warning.tscn")
+var explosion_scene: PackedScene = preload("res://scenes/ExplosionMedium.tscn")
 
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
@@ -50,3 +51,10 @@ func _on_fire_cooldown_timeout() -> void:
 	if attacks == maxattacks:
 		$FireCooldown.stop()
 		attacks = 0
+
+func destroy():
+	if explosion_scene != null:
+		var explosion = explosion_scene.instantiate()
+		explosion.global_position = global_position
+		get_tree().get_root().add_child(explosion)
+	queue_free()
