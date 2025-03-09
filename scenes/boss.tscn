@@ -55,9 +55,9 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_lfav3")
 
 [node name="LaserBeam" type="Node2D" parent="."]
+visible = false
 
 [node name="LaserBeamWindup" type="Node2D" parent="LaserBeam"]
-visible = false
 
 [node name="Arm1" type="Node2D" parent="LaserBeam/LaserBeamWindup"]
 
@@ -91,7 +91,6 @@ scale = Vector2(12, 4)
 texture = ExtResource("7_aljyp")
 
 [node name="LaserBeamActual" type="Node2D" parent="LaserBeam"]
-visible = false
 
 [node name="Arm1" type="Node2D" parent="LaserBeam/LaserBeamActual"]
 
@@ -120,6 +119,140 @@ texture = ExtResource("8_wgtvn")
 rotation = 4.71239
 
 [node name="Sprite2D" type="Sprite2D" parent="LaserBeam/LaserBeamActual/Arm4"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="P3LaserBeam" type="Node2D" parent="."]
+
+[node name="LaserBeamWindup" type="Node2D" parent="P3LaserBeam"]
+visible = false
+
+[node name="Arm1" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm1"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm2" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm2"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm3" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+rotation = -3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm3"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm4" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+rotation = -1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm4"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm5" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+rotation = 0.785398
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm5"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm6" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+rotation = 2.35619
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm6"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm7" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+rotation = 3.92699
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm7"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="Arm8" type="Node2D" parent="P3LaserBeam/LaserBeamWindup"]
+rotation = 5.49779
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamWindup/Arm8"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("7_aljyp")
+
+[node name="LaserBeamActual" type="Node2D" parent="P3LaserBeam"]
+visible = false
+
+[node name="Arm1" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm1"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm2" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+rotation = 1.5708
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm2"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm3" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+rotation = 3.14159
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm3"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm4" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+rotation = 4.71239
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm4"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm5" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+rotation = 0.785398
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm5"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm6" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+rotation = 2.35619
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm6"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm7" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+rotation = 3.92699
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm7"]
+position = Vector2(455, 0)
+scale = Vector2(12, 4)
+texture = ExtResource("8_wgtvn")
+
+[node name="Arm8" type="Node2D" parent="P3LaserBeam/LaserBeamActual"]
+rotation = 5.49779
+
+[node name="Sprite2D" type="Sprite2D" parent="P3LaserBeam/LaserBeamActual/Arm8"]
 position = Vector2(455, 0)
 scale = Vector2(12, 4)
 texture = ExtResource("8_wgtvn")
@@ -307,11 +440,27 @@ initial_state = NodePath("P3AttackIdle")
 [node name="P3AttackIdle" type="Node" parent="PhaseStateChart/Phases/Phase 3/Attack"]
 script = ExtResource("5_vdsfw")
 
+[node name="Transition" type="Node" parent="PhaseStateChart/Phases/Phase 3/Attack/P3AttackIdle"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../P3AttackWindup")
+event = &"p3AttackWindup"
+delay_in_seconds = "0.0"
+
 [node name="P3AttackWindup" type="Node" parent="PhaseStateChart/Phases/Phase 3/Attack"]
 script = ExtResource("5_vdsfw")
 
+[node name="Transition" type="Node" parent="PhaseStateChart/Phases/Phase 3/Attack/P3AttackWindup"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../P3AttackActual")
+delay_in_seconds = "1.5"
+
 [node name="P3AttackActual" type="Node" parent="PhaseStateChart/Phases/Phase 3/Attack"]
 script = ExtResource("5_vdsfw")
+
+[node name="Transition" type="Node" parent="PhaseStateChart/Phases/Phase 3/Attack/P3AttackActual"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../P3AttackIdle")
+delay_in_seconds = "1.0"
 
 [connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 0/Chilling" to="." method="_on_chilling_state_physics_processing"]
@@ -344,3 +493,4 @@ script = ExtResource("5_vdsfw")
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 3/Movement/P3_DashAttack" to="." method="_on_p_3_dash_attack_state_entered"]
 [connection signal="state_exited" from="PhaseStateChart/Phases/Phase 3/Movement/P3_DashAttack" to="." method="_on_p_3_dash_attack_state_exited"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 3/Movement/P3_DashAttack" to="." method="_on_p_3_dash_attack_state_physics_processing"]
+[connection signal="state_entered" from="PhaseStateChart/Phases/Phase 3/Attack/P3AttackWindup" to="." method="_on_p_3_attack_windup_state_entered"]
