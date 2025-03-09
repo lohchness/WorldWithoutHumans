@@ -14,6 +14,7 @@ var speed: float
 var accel: float
 
 var health: float = 100.0
+var laser_damage = 30
 
 @onready var phases_sc: StateChart = $PhaseStateChart
 
@@ -166,6 +167,10 @@ func _on_p_2_attack_actual_state_physics_processing(delta: float) -> void:
 	## !!! The third parameter is transition to P2AttackIdle
 	var alpha = remap(modulate_timer, 0, 1.0, 1, 0)
 	p2_laser_actual.set("modulate", Color(1,1,1,alpha))
+	
+	if target_in_p2_hurtbox:
+		target.damage(laser_damage)
+		target_in_p2_hurtbox = false
 
 func _on_p_2_attack_actual_state_exited() -> void:
 	p2_laser_actual.visible = false
@@ -189,6 +194,15 @@ func _on_p_2_big_arty_fire_separation_timeout() -> void:
 func _on_phase_2_state_exited() -> void:
 	$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Cooldown".stop()
 
+var target_in_p2_hurtbox = false
+
+func _on_p_2_laser_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		target_in_p2_hurtbox = true
+
+func _on_p_2_laser_hurtbox_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		target_in_p2_hurtbox = false
 
 ## PHASE 3
 
