@@ -1,15 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpp7u0l3tqwhb"]
+[gd_scene load_steps=6 format=3 uid="uid://dpp7u0l3tqwhb"]
 
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="1_k27sb"]
 [ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="2_uijy8"]
-[ext_resource type="PackedScene" uid="uid://lcqujtpkr4ni" path="res://scenes/fighter_jets.tscn" id="3_igvcb"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="4_4jelx"]
+[ext_resource type="PackedScene" uid="uid://bym6dwufhuqxr" path="res://scenes/boss.tscn" id="5_aaspq"]
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="5_r7lba"]
-[ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="6_juwuh"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(501, -566)
@@ -31,9 +30,7 @@ offset_left = 79.0
 offset_top = -224.0
 offset_right = 419.0
 offset_bottom = 222.0
+initial_node_to_watch = NodePath("../../Boss")
 
-[node name="Fighter Jets" parent="." instance=ExtResource("3_igvcb")]
-position = Vector2(324, 633)
-
-[node name="Artillery" parent="." instance=ExtResource("6_juwuh")]
-position = Vector2(619, 588)
+[node name="Boss" parent="." instance=ExtResource("5_aaspq")]
+position = Vector2(592, 448)
