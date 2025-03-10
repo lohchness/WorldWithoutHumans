@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwfl1o45t8ds6"]
+
+[ext_resource type="Texture2D" uid="uid://uoh7nk73wart" path="res://sprites/UI/MenuBackground.png" id="1_ooo4n"]
+[ext_resource type="Texture2D" uid="uid://cmbu10p2gct7q" path="res://sprites/UI/Paused.png" id="2_akntb"]
+[ext_resource type="Texture2D" uid="uid://b1cb1k1f4fv4t" path="res://sprites/UI/Continue.png" id="3_752fq"]
+[ext_resource type="Texture2D" uid="uid://b71l3p2n0txg5" path="res://sprites/UI/QuitPaused.png" id="4_nkwie"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ooo4n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_akntb")
+
+[node name="Continue" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 325.0
+offset_right = 699.0
+offset_bottom = 467.0
+texture_normal = ExtResource("3_752fq")
+
+[node name="QuitPaused" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 488.0
+offset_right = 697.0
+offset_bottom = 606.0
+texture_normal = ExtResource("4_nkwie")
