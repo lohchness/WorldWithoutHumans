@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://054y5p86va5t"]
+[gd_scene load_steps=21 format=3 uid="uid://054y5p86va5t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nibr2"]
 [ext_resource type="Texture2D" uid="uid://wxphq7pc633m" path="res://sprites/Ability1.png" id="2_cyhhi"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_hfjrv"]
 [ext_resource type="Texture2D" uid="uid://cbpe1m4u30c6g" path="res://sprites/AbilityTimer.png" id="6_1omv8"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="6_04kif"]
+[ext_resource type="FontFile" uid="uid://b78o1rjwtp2vo" path="res://monogram.ttf" id="7_nkhw4"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_tkxti"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_ii2tu"]
 [ext_resource type="Texture2D" uid="uid://bugjngc27ncw3" path="res://sprites/Magnet.png" id="8_lekca"]
@@ -81,11 +82,12 @@ texture = ExtResource("6_1omv8")
 visible = false
 z_index = 1
 texture_filter = 1
-offset_left = -142.0
+offset_left = -140.0
 offset_top = 173.0
-offset_right = -102.0
+offset_right = -100.0
 offset_bottom = 264.0
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("7_nkhw4")
+theme_override_font_sizes/font_size = 80
 text = "4"
 
 [node name="Ability2TimerBackground" type="Sprite2D" parent="Abilities/Icons/Cooldown"]
@@ -102,7 +104,8 @@ offset_left = -60.0
 offset_top = 173.0
 offset_right = -20.0
 offset_bottom = 264.0
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("7_nkhw4")
+theme_override_font_sizes/font_size = 80
 text = "4"
 
 [node name="Timers" type="Node2D" parent="Abilities"]
