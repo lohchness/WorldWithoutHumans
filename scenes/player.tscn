@@ -229,7 +229,7 @@ script = ExtResource("8_ii2tu")
 [node name="On Finish Attack" type="Node" parent="WeaponStateChart/Weapons/A1/A1 Attacking"]
 script = ExtResource("9_4eeg8")
 to = NodePath("../../A1 Cooldown")
-delay_in_seconds = "1.0"
+delay_in_seconds = "2.0"
 
 [node name="A1 Cooldown" type="Node" parent="WeaponStateChart/Weapons/A1"]
 script = ExtResource("8_ii2tu")
@@ -237,7 +237,7 @@ script = ExtResource("8_ii2tu")
 [node name="On Cooldown Finish" type="Node" parent="WeaponStateChart/Weapons/A1/A1 Cooldown"]
 script = ExtResource("9_4eeg8")
 to = NodePath("../../A1 Ready")
-delay_in_seconds = "4.0"
+delay_in_seconds = "2.0"
 
 [node name="A2" type="Node" parent="WeaponStateChart/Weapons"]
 script = ExtResource("7_tkxti")
