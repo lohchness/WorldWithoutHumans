@@ -68,4 +68,5 @@ offset_bottom = 407.0
 texture_normal = ExtResource("6_tle5d")
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
