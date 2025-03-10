@@ -7,6 +7,7 @@ var damage = 1
 var attack_cooldown = 5
 var attack_timer: float = 0.0
 
+var corpse_scene: PackedScene = preload("res://scenes/corpse.tscn")
 
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
@@ -39,4 +40,10 @@ func _on_gunfirevisible_timeout() -> void:
 	$Gunfire.visible = false
 
 func die():
+	
+	for i in randi_range(2, 8):
+		var s = corpse_scene.instantiate()
+		s.global_position = global_position + Vector2(randf_range(-5, 5), randf_range(-5, 5))
+		get_tree().root.add_child(s)
+	
 	queue_free()
