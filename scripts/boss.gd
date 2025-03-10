@@ -27,6 +27,8 @@ var target_acquired = false
 @onready var annoyed_face = preload("res://sprites/Boss/Annoyed.png")
 @onready var angry = preload("res://sprites/Boss/Angry.png")
 
+@onready var buildingdestroy = $Areas/BuildingDestroy
+
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 	speed = PHASE_1_SPEED
@@ -34,6 +36,11 @@ func _ready() -> void:
 	
 	p2_laser_windup.visible = false
 	p2_laser_actual.visible = false
+
+func _physics_process(delta: float) -> void:
+	var areas = buildingdestroy.get_overlapping_areas()
+	for i in areas:
+		i.destroy()
 
 func damage(dmg):
 	print("Boss damaged for " + str(dmg) + " damage")
