@@ -3,7 +3,7 @@ extends Node2D
 var target: CharacterBody2D
 var target_acquired = false
 
-var damage = 25
+var damage = 15
 
 var explosion_scene: PackedScene = preload("res://scenes/FlakBurst.tscn")
 
