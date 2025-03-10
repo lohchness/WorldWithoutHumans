@@ -20,6 +20,12 @@ region_rect = Rect2(-533.097, -1001.85, 5065.23, 3110.65)
 [node name="Player" parent="." instance=ExtResource("2_ro40g")]
 position = Vector2(1972, -441)
 
+[node name="Camera2D2" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = -2750
+limit_right = 4700
+limit_bottom = 0
+
 [node name="Buildings" type="Node2D" parent="."]
 
 [node name="Building" parent="Buildings" instance=ExtResource("3_mlfew")]

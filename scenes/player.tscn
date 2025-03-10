@@ -45,10 +45,6 @@ shape = SubResource("RectangleShape2D_ra6n5")
 position = Vector2(0, -9)
 shape = SubResource("CircleShape2D_d7a0x")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.3, 1.3)
-process_callback = 0
-
 [node name="Abilities" type="Node2D" parent="."]
 
 [node name="Icons" type="Node2D" parent="Abilities"]
