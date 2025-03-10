@@ -31,6 +31,7 @@ signal gameover
 @onready var magnet_cooldown_finish_transition: Transition = $"WeaponStateChart/Weapons/A2/A2 Cooldown/Transition"
 
 @export var missileHotbar: Array[Sprite2D] = []
+@onready var sfx_missile_5: AudioStreamPlayer2D = $sfx_missile5
 
 var laser_on_cooldown = false
 var magnet_on_cooldown = false
@@ -72,6 +73,7 @@ func _input(event: InputEvent) -> void:
 		weapon_sc.send_event("on_a2_attack")
 	if event.is_action_pressed("fire_missiles"):
 		fire_missiles()
+		sfx_missile_5.play()
 	if event.is_action_pressed("use_healing"):
 		convert_humans()
 
