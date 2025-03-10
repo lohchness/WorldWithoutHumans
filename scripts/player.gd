@@ -5,10 +5,12 @@ var accel = 20
 
 var battery: float = 100.0
 var health: float = 100.0
+var maxhealth = 100
 
 var direction : Vector2
 
 @onready var beam_weapon = $BeamWeapon
+@onready var healthbar: HPBar = $Abilities/HPBar
 
 signal gameover
 
@@ -32,6 +34,8 @@ signal gameover
 
 var laser_on_cooldown = false
 var magnet_on_cooldown = false
+
+var humans_consumed: int = 0
 
 func _ready() -> void:
 	magnet_area.monitoring = false
@@ -74,6 +78,8 @@ func damage(amount: float) -> void:
 	health -= amount
 	print("Took " + str(amount) + " damage. Health remaining: " + str(health))
 	
+	healthbar.update_healthpercent(health / maxhealth)
+	
 	if health <= 0:
 		gameover.emit()
 
@@ -112,7 +118,7 @@ func _on_magnet_area_body_entered(body: Node2D) -> void:
 		body.die()
 
 func picked_up_corpse():
-	print("hello")
+	humans_consumed += 1
 
 func _on_ability_1_cooldown_timeout() -> void:
 	laser_on_cooldown = false

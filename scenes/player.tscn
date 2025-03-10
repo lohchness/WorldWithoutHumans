@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://054y5p86va5t"]
+[gd_scene load_steps=23 format=3 uid="uid://054y5p86va5t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nibr2"]
 [ext_resource type="Texture2D" uid="uid://wxphq7pc633m" path="res://sprites/Ability1.png" id="2_cyhhi"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_ii2tu"]
 [ext_resource type="Texture2D" uid="uid://bbi2nwyr7y1lq" path="res://sprites/SeekingMissile.png" id="8_l6dmt"]
 [ext_resource type="Texture2D" uid="uid://bugjngc27ncw3" path="res://sprites/Magnet.png" id="8_lekca"]
+[ext_resource type="PackedScene" uid="uid://be1bh5umr1l45" path="res://scenes/hp_bar.tscn" id="9_1x56w"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_4eeg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra6n5"]
@@ -163,6 +164,9 @@ texture = ExtResource("8_l6dmt")
 [node name="MissileCountdown" type="Timer" parent="Abilities/Missiles"]
 wait_time = 0.3
 autostart = true
+
+[node name="HPBar" parent="Abilities" instance=ExtResource("9_1x56w")]
+position = Vector2(0, 153)
 
 [node name="Marker" type="Sprite2D" parent="."]
 texture_filter = 1

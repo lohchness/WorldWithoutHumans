@@ -16,7 +16,10 @@ func _physics_process(delta: float) -> void:
 	
 
 func update_healthpercent(healthpercent: float):
-	target_percentage = healthpercent
+	if healthpercent < 0:
+		percentage = 0
+		return
+	percentage = healthpercent
 
 func update_humanpercent(humanpercent: float):
 	humanbar.set_scale(Vector2(humanpercent, 1))
