@@ -213,13 +213,14 @@ script = ExtResource("8_ii2tu")
 [node name="Transition" type="Node" parent="WeaponStateChart/Weapons/A2/A2 Cooldown"]
 script = ExtResource("9_4eeg8")
 to = NodePath("../../A2 Ready")
-delay_in_seconds = "6.0"
+delay_in_seconds = "5.0"
 
 [node name="Main ship" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_vo2l8")
 
 [connection signal="timeout" from="Abilities/Timers/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
+[connection signal="timeout" from="Abilities/Timers/Ability2Cooldown" to="." method="_on_ability_2_cooldown_timeout"]
 [connection signal="body_entered" from="MagnetWeapon/MagnetArea" to="." method="_on_magnet_area_body_entered"]
 [connection signal="state_entered" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_entered"]
 [connection signal="state_exited" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_exited"]

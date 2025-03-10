@@ -17,20 +17,25 @@ signal gameover
 @onready var marker = $Marker
 
 @onready var laser_cooldown_timer: Timer = $Abilities/Timers/Ability1Cooldown
+@onready var laser_timer_background: Sprite2D = $Abilities/Icons/Cooldown/Ability1TimerBackground
+@onready var laser_timer_text: Label = $Abilities/Icons/Cooldown/Ability1TimerText
+@onready var laser_finish_attack_transition: Transition = $"WeaponStateChart/Weapons/A1/A1 Attacking/On Finish Attack"
+@onready var laser_cooldown_finish_transition: Transition = $"WeaponStateChart/Weapons/A1/A1 Cooldown/On Cooldown Finish"
+
 @onready var magnet_cooldown_timer: Timer = $Abilities/Timers/Ability2Cooldown
-
-@onready var laser_timer_background = $Abilities/Icons/Cooldown/Ability1TimerBackground
-@onready var laser_timer_text = $Abilities/Icons/Cooldown/Ability1TimerText
-
-@onready var laser_finish_attack_transition = $"WeaponStateChart/Weapons/A1/A1 Attacking/On Finish Attack"
-@onready var laser_cooldown_finish_transition = $"WeaponStateChart/Weapons/A1/A1 Cooldown/On Cooldown Finish"
+@onready var magnet_timer_background: Sprite2D = $Abilities/Icons/Cooldown/Ability2TimerBackground
+@onready var magnet_timer_text: Label = $Abilities/Icons/Cooldown/Ability2TimerText
+@onready var magnet_finish_attack_transition: Transition = $"WeaponStateChart/Weapons/A2/A2 Attacking/Transition"
+@onready var magnet_cooldown_finish_transition: Transition = $"WeaponStateChart/Weapons/A2/A2 Cooldown/Transition"
 
 var laser_on_cooldown = false
+var magnet_on_cooldown = false
 
 func _ready() -> void:
 	magnet_area.monitoring = false
 	
 	laser_cooldown_timer.wait_time = int(laser_finish_attack_transition.delay_in_seconds) + int(laser_cooldown_finish_transition.delay_in_seconds)
+	magnet_cooldown_timer.wait_time = int(magnet_finish_attack_transition.delay_in_seconds) + int(magnet_cooldown_finish_transition.delay_in_seconds)
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -43,7 +48,10 @@ func _physics_process(delta: float) -> void:
 		laser_timer_background.visible = true
 		laser_timer_text.visible = true
 		laser_timer_text.text = str(ceil(laser_cooldown_timer.time_left))
-
+	if magnet_on_cooldown:
+		magnet_timer_background.visible = true
+		magnet_timer_text.visible = true
+		magnet_timer_text.text = str(ceil(magnet_cooldown_timer.time_left))
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_laser"):
@@ -82,6 +90,8 @@ func _on_a_1_attacking_state_physics_processing(delta: float) -> void:
 func _on_a_2_attacking_state_entered() -> void:
 	magnet_area.monitoring = true
 	magnet_sprite.visible = true
+	magnet_cooldown_timer.start()
+	magnet_on_cooldown = true
 
 func _on_a_2_attacking_state_exited() -> void:
 	magnet_area.monitoring = false
@@ -98,3 +108,9 @@ func _on_ability_1_cooldown_timeout() -> void:
 	laser_on_cooldown = false
 	laser_timer_background.visible = false
 	laser_timer_text.visible = false
+
+
+func _on_ability_2_cooldown_timeout() -> void:
+	magnet_on_cooldown = false
+	magnet_timer_background.visible = false
+	magnet_timer_text.visible = false
