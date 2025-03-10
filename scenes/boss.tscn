@@ -140,6 +140,8 @@ texture = ExtResource("8_wgtvn")
 
 [node name="P2_LaserHurtbox" type="Area2D" parent="LaserBeam"]
 visible = false
+collision_layer = 0
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserBeam/P2_LaserHurtbox"]
 position = Vector2(455, 0)
@@ -349,7 +351,7 @@ script = ExtResource("3_sux2h")
 
 [node name="Phases" type="Node" parent="PhaseStateChart"]
 script = ExtResource("4_5m5dw")
-initial_state = NodePath("Phase 1")
+initial_state = NodePath("Phase 2")
 
 [node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")

@@ -154,6 +154,8 @@ func _on_dash_attack_state_exited() -> void:
 
 ## P2 Attack
 
+@onready var laserarea: Area2D = $LaserBeam/P2_LaserHurtbox
+
 func _on_p_2_attack_windup_state_entered() -> void:
 	modulate_timer = 0
 	p2_laser_windup.visible = true
@@ -171,6 +173,8 @@ func _on_p_2_attack_windup_state_exited() -> void:
 func _on_p_2_attack_actual_state_entered() -> void:
 	modulate_timer = 0
 	p2_laser_actual.visible = true
+	
+	laserarea.monitoring = true
 
 func _on_p_2_attack_actual_state_physics_processing(delta: float) -> void:
 	modulate_timer += delta
@@ -182,9 +186,17 @@ func _on_p_2_attack_actual_state_physics_processing(delta: float) -> void:
 	if target_in_p2_hurtbox:
 		target.damage(laser_damage)
 		target_in_p2_hurtbox = false
+	
+	# Laser destroy building
+	var areas = laserarea.get_overlapping_areas()
+	for i in areas:
+		if i.has_method("destroy"):
+			i.destroy()
 
 func _on_p_2_attack_actual_state_exited() -> void:
 	p2_laser_actual.visible = false
+	
+	laserarea.monitoring = false
 
 func _on_p_2_big_arty_fire_cooldown_timeout() -> void:
 	$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Separation".start()
