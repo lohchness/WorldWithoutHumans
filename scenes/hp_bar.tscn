@@ -1,15 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://be1bh5umr1l45"]
+[gd_scene load_steps=5 format=3 uid="uid://be1bh5umr1l45"]
 
+[ext_resource type="Script" path="res://scripts/hp_bar.gd" id="1_fk8qo"]
 [ext_resource type="Texture2D" uid="uid://cii3mwuprf1te" path="res://sprites/HPBarRed.png" id="1_wy0oa"]
 [ext_resource type="Texture2D" uid="uid://dqxwiinenkbeo" path="res://sprites/HPBarHuman.png" id="2_xud46"]
 [ext_resource type="Texture2D" uid="uid://c8gmkvt0w5e8u" path="res://sprites/HPBarOutline.png" id="3_frn05"]
 
 [node name="HPBar" type="Node2D"]
+script = ExtResource("1_fk8qo")
 
 [node name="Red" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(-145, -9)
-scale = Vector2(0.496552, 1)
 texture = ExtResource("1_wy0oa")
 centered = false
 
