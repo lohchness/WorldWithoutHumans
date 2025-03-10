@@ -69,15 +69,15 @@ z_index = 1
 position = Vector2(124, 209)
 texture = ExtResource("5_0fyxd")
 
-[node name="Timer" type="Node2D" parent="Abilities"]
+[node name="Cooldown" type="Node2D" parent="Abilities/Icons"]
 
-[node name="Ability1TimerBackground" type="Sprite2D" parent="Abilities/Timer"]
+[node name="Ability1TimerBackground" type="Sprite2D" parent="Abilities/Icons/Cooldown"]
 visible = false
 z_index = 1
 position = Vector2(-126, 209)
 texture = ExtResource("6_1omv8")
 
-[node name="Ability1TimerText" type="Label" parent="Abilities/Timer"]
+[node name="Ability1TimerText" type="Label" parent="Abilities/Icons/Cooldown"]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -88,13 +88,13 @@ offset_bottom = 264.0
 theme_override_font_sizes/font_size = 50
 text = "4"
 
-[node name="Ability2TimerBackground" type="Sprite2D" parent="Abilities/Timer"]
+[node name="Ability2TimerBackground" type="Sprite2D" parent="Abilities/Icons/Cooldown"]
 visible = false
 z_index = 1
 position = Vector2(-44, 209)
 texture = ExtResource("6_1omv8")
 
-[node name="Ability2TimerText" type="Label" parent="Abilities/Timer"]
+[node name="Ability2TimerText" type="Label" parent="Abilities/Icons/Cooldown"]
 visible = false
 z_index = 1
 texture_filter = 1
@@ -104,6 +104,14 @@ offset_right = -20.0
 offset_bottom = 264.0
 theme_override_font_sizes/font_size = 50
 text = "4"
+
+[node name="Timers" type="Node2D" parent="Abilities"]
+
+[node name="Ability1Cooldown" type="Timer" parent="Abilities/Timers"]
+one_shot = true
+
+[node name="Ability2Cooldown" type="Timer" parent="Abilities/Timers"]
+one_shot = true
 
 [node name="Marker" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -208,6 +216,7 @@ delay_in_seconds = "6.0"
 texture_filter = 1
 texture = ExtResource("2_vo2l8")
 
+[connection signal="timeout" from="Abilities/Timers/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
 [connection signal="body_entered" from="MagnetWeapon/MagnetArea" to="." method="_on_magnet_area_body_entered"]
 [connection signal="state_entered" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_entered"]
 [connection signal="state_exited" from="WeaponStateChart/Weapons/A1/A1 Attacking" to="." method="_on_a_1_attacking_state_exited"]
