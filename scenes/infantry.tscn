@@ -10,7 +10,7 @@ size = Vector2(32, 41)
 [sub_resource type="CircleShape2D" id="CircleShape2D_khomy"]
 radius = 126.004
 
-[node name="Infantry" type="CharacterBody2D" groups=["Infantry"]]
+[node name="Infantry" type="CharacterBody2D" groups=["Infantry", "Targetable"]]
 collision_layer = 512
 collision_mask = 4
 script = ExtResource("1_68kqu")

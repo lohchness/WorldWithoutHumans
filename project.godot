@@ -29,6 +29,7 @@ Player=""
 Building=""
 Infantry=""
 Corpse=""
+Targetable=""
 
 [input]
 
