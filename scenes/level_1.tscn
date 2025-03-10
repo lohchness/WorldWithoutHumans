@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbgem2jli2cbh"]
+[gd_scene load_steps=6 format=3 uid="uid://dbgem2jli2cbh"]
 
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_1nl7p"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_u8e85"]
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="2_ro40g"]
 [ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="3_mlfew"]
+[ext_resource type="PackedScene" uid="uid://c747frw0n8yce" path="res://scenes/infantry.tscn" id="5_vjxsv"]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource("1_u8e85")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -672,3 +675,92 @@ position = Vector2(3306, -2197)
 
 [node name="Building218" parent="Buildings" instance=ExtResource("3_mlfew")]
 position = Vector2(3414, -2149)
+
+[node name="FighterJetSpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="FighterJetSpawner" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(-680, -1393)
+
+[node name="Node2D5" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(-688, 370)
+
+[node name="Node2D6" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(-646, -3258)
+
+[node name="Node2D7" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(5202, -3250)
+
+[node name="Node2D8" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(5177, 513)
+
+[node name="Node2D2" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(2091, 462)
+
+[node name="Node2D3" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(5269, -1615)
+
+[node name="Node2D4" type="Node2D" parent="FighterJetSpawner"]
+position = Vector2(2261, -3444)
+
+[node name="Infantry" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(1179, -447)
+
+[node name="Infantry2" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(1494, -1504)
+
+[node name="Infantry3" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(1327, -1501)
+
+[node name="Infantry4" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2517, -1525)
+
+[node name="Infantry5" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2621, -1529)
+
+[node name="Infantry6" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2745, -1519)
+
+[node name="Infantry7" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2714, -729)
+
+[node name="Infantry8" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2701, -830)
+
+[node name="Infantry9" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2704, -931)
+
+[node name="Infantry10" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(548, -1177)
+
+[node name="Infantry11" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(538, -1099)
+
+[node name="Infantry12" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(545, -1008)
+
+[node name="Infantry13" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(538, -1701)
+
+[node name="Infantry14" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(1422, -2220)
+
+[node name="Infantry15" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(1515, -2235)
+
+[node name="Infantry16" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(1314, -2235)
+
+[node name="Infantry17" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2188, -2286)
+
+[node name="Infantry18" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(2279, -2311)
+
+[node name="Infantry19" parent="." instance=ExtResource("5_vjxsv")]
+position = Vector2(3540, -1833)
+
+[connection signal="timeout" from="FighterJetSpawnTimer" to="." method="_on_fighter_jet_spawn_timer_timeout"]
