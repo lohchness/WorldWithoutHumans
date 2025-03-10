@@ -50,6 +50,5 @@ func _on_fire_cooldown_timeout() -> void:
 	var s = missile_scene.instantiate()
 	s.global_position = global_position
 	get_tree().root.add_child(s)
-	print("fired missile")
 	
 	num_fired += 1

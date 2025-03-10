@@ -3,7 +3,7 @@ extends CharacterBody2D
 var target: CharacterBody2D
 var target_acquired = false
 
-var damage = 1
+var dmg = 1
 var attack_cooldown = 5
 var attack_timer: float = 0.0
 
@@ -25,7 +25,7 @@ func _on_timer_timeout() -> void:
 	if target_acquired:
 		$Gunfire.visible = true
 		$Gunfirevisible.start()
-		target.damage(damage)
+		target.damage(dmg)
 	$Timer.wait_time = randf_range(2, 5)
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
@@ -46,4 +46,7 @@ func die():
 		s.global_position = global_position + Vector2(randf_range(-5, 5), randf_range(-5, 5))
 		get_tree().root.add_child(s)
 	
+	queue_free()
+
+func damage(dmg):
 	queue_free()

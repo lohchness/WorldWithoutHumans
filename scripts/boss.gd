@@ -35,6 +35,9 @@ func _ready() -> void:
 	p2_laser_windup.visible = false
 	p2_laser_actual.visible = false
 
+func damage(dmg):
+	print("Boss damaged for " + str(dmg) + " damage")
+
 ## PHASE 0
 
 func _on_player_detect_body_entered(body: Node2D) -> void:
