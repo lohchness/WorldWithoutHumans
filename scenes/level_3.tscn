@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc31c2dtt5oun"]
+[gd_scene load_steps=6 format=3 uid="uid://cc31c2dtt5oun"]
 
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_gb2g1"]
+[ext_resource type="Script" path="res://scripts/level_3.gd" id="1_okic7"]
 [ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="2_be7ae"]
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="3_5nfyx"]
 [ext_resource type="PackedScene" uid="uid://bym6dwufhuqxr" path="res://scenes/boss.tscn" id="4_6rlnk"]
 
 [node name="Level3" type="Node2D"]
+script = ExtResource("1_okic7")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -783,6 +785,24 @@ position = Vector2(1615, -2601)
 position = Vector2(2033, -391)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = -3500
+limit_right = 3750
+limit_bottom = 0
 
 [node name="Boss" parent="." instance=ExtResource("4_6rlnk")]
 position = Vector2(2074, -2042)
+
+[node name="Infantry Spawners" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Infantry Spawners"]
+position = Vector2(2060, 238)
+
+[node name="Node2D2" type="Node2D" parent="Infantry Spawners"]
+position = Vector2(-241, -2501)
+
+[node name="Node2D3" type="Node2D" parent="Infantry Spawners"]
+position = Vector2(3984, -2483)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
