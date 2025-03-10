@@ -6,7 +6,8 @@ var infantry_spawners: Array
 func _ready() -> void:
 	infantry_spawners = $"Infantry Spawners".get_children()
 
-func _on_jetfighter_timer_timeout() -> void:
+
+func _on_infarty_timer_timeout() -> void:
 	for i in range(2):
 		var s = infantry.instantiate()
 		s.global_transform = infantry_spawners.pick_random().global_transform

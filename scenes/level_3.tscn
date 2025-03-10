@@ -805,8 +805,9 @@ position = Vector2(-241, -2501)
 [node name="Node2D3" type="Node2D" parent="Infantry Spawners"]
 position = Vector2(3984, -2483)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="InfartyTimer" type="Timer" parent="."]
 wait_time = 2.0
+autostart = true
 
 [node name="Artillery" parent="." instance=ExtResource("6_nohsu")]
 position = Vector2(974, -1134)
@@ -819,3 +820,5 @@ position = Vector2(1149, -3008)
 
 [node name="Artillery4" parent="." instance=ExtResource("6_nohsu")]
 position = Vector2(2848, -3113)
+
+[connection signal="timeout" from="InfartyTimer" to="." method="_on_infarty_timer_timeout"]
