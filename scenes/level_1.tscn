@@ -1,0 +1,674 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbgem2jli2cbh"]
+
+[ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_1nl7p"]
+[ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="2_ro40g"]
+[ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="3_mlfew"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(2446, -1425)
+texture = ExtResource("1_1nl7p")
+region_enabled = true
+region_rect = Rect2(-533.097, -1001.85, 5065.23, 3110.65)
+
+[node name="Player" parent="." instance=ExtResource("2_ro40g")]
+position = Vector2(2366, -371)
+
+[node name="Buildings" type="Node2D" parent="."]
+
+[node name="Building" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2052, -592)
+
+[node name="Building2" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1893, -592)
+
+[node name="Building3" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1791, -593)
+
+[node name="Building4" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1648, -596)
+
+[node name="Building5" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1647, -735)
+
+[node name="Building6" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1789, -738)
+
+[node name="Building7" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1895, -740)
+
+[node name="Building8" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2053, -696)
+
+[node name="Building9" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2051, -801)
+
+[node name="Building10" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2052, -883)
+
+[node name="Building11" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1897, -817)
+
+[node name="Building12" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1787, -824)
+
+[node name="Building13" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1445, -736)
+
+[node name="Building14" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1346, -735)
+
+[node name="Building15" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1447, -834)
+
+[node name="Building16" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1347, -833)
+
+[node name="Building17" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1647, -832)
+
+[node name="Building18" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1547, -597)
+
+[node name="Building19" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1546, -736)
+
+[node name="Building20" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1549, -833)
+
+[node name="Building21" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1444, -598)
+
+[node name="Building22" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1342, -598)
+
+[node name="Building23" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1243, -598)
+
+[node name="Building24" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1244, -739)
+
+[node name="Building25" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1345, -897)
+
+[node name="Building26" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1346, -962)
+
+[node name="Building27" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1346, -1021)
+
+[node name="Building28" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1449, -901)
+
+[node name="Building29" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1548, -903)
+
+[node name="Building30" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1449, -961)
+
+[node name="Building31" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1555, -969)
+
+[node name="Building32" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1451, -1022)
+
+[node name="Building33" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1451, -1083)
+
+[node name="Building34" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1447, -1141)
+
+[node name="Building35" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1797, -1114)
+
+[node name="Building36" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1905, -1114)
+
+[node name="Building37" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1796, -1177)
+
+[node name="Building38" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1902, -1174)
+
+[node name="Building39" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1794, -1240)
+
+[node name="Building40" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(1905, -1241)
+
+[node name="Building41" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2006, -1179)
+
+[node name="Building42" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2109, -1179)
+
+[node name="Building43" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2644, -711)
+
+[node name="Building44" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2745, -709)
+
+[node name="Building45" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2747, -766)
+
+[node name="Building46" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2745, -823)
+
+[node name="Building47" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2746, -881)
+
+[node name="Building48" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2852, -881)
+
+[node name="Building49" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2850, -821)
+
+[node name="Building50" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2850, -764)
+
+[node name="Building51" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2747, -944)
+
+[node name="Building52" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2745, -1003)
+
+[node name="Building53" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2745, -1061)
+
+[node name="Building54" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2642, -1060)
+
+[node name="Building55" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2643, -655)
+
+[node name="Building56" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2644, -557)
+
+[node name="Building57" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2747, -559)
+
+[node name="Building58" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2844, -647)
+
+[node name="Building59" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2854, -558)
+
+[node name="Building60" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2539, -502)
+
+[node name="Building61" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2647, -501)
+
+[node name="Building62" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2752, -502)
+
+[node name="Building63" parent="Buildings" instance=ExtResource("3_mlfew")]
+position = Vector2(2859, -501)
+
+[node name="Building" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2644, -1129)
+
+[node name="Building2" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2757, -1583)
+
+[node name="Building3" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2656, -1585)
+
+[node name="Building4" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2556, -1584)
+
+[node name="Building5" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2457, -1585)
+
+[node name="Building6" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2358, -1585)
+
+[node name="Building7" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2193, -1804)
+
+[node name="Building8" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2200, -1884)
+
+[node name="Building9" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2199, -1957)
+
+[node name="Building10" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2200, -2030)
+
+[node name="Building11" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2207, -2103)
+
+[node name="Building12" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2319, -1386)
+
+[node name="Building13" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2319, -1445)
+
+[node name="Building14" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2203, -2165)
+
+[node name="Building15" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2429, -2061)
+
+[node name="Building16" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2443, -1981)
+
+[node name="Building17" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2445, -1906)
+
+[node name="Building18" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2447, -1831)
+
+[node name="Building19" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2442, -1758)
+
+[node name="Building20" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2667, -1704)
+
+[node name="Building21" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2667, -1637)
+
+[node name="Building22" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2253, -1585)
+
+[node name="Building23" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2148, -1588)
+
+[node name="Building24" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2861, -1586)
+
+[node name="Building25" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1670, -1779)
+
+[node name="Building26" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1787, -1775)
+
+[node name="Building27" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1667, -1708)
+
+[node name="Building28" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1781, -1633)
+
+[node name="Building29" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1672, -1630)
+
+[node name="Building30" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1563, -1664)
+
+[node name="Building31" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1892, -1774)
+
+[node name="Building32" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1554, -1785)
+
+[node name="Building33" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1670, -1850)
+
+[node name="Building34" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1774, -1903)
+
+[node name="Building35" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1881, -1959)
+
+[node name="Building36" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1459, -1727)
+
+[node name="Building37" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1452, -1784)
+
+[node name="Building38" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1348, -1833)
+
+[node name="Building39" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1348, -1776)
+
+[node name="Building40" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1250, -1727)
+
+[node name="Building41" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1252, -1666)
+
+[node name="Building42" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1256, -1605)
+
+[node name="Building43" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1354, -1718)
+
+[node name="Building44" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1360, -1660)
+
+[node name="Building45" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1561, -1723)
+
+[node name="Building46" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1564, -1608)
+
+[node name="Building47" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1425, -1996)
+
+[node name="Building48" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1528, -1997)
+
+[node name="Building49" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1428, -2060)
+
+[node name="Building50" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1321, -2062)
+
+[node name="Building51" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1429, -2122)
+
+[node name="Building52" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1429, -2182)
+
+[node name="Building53" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1221, -2062)
+
+[node name="Building54" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1120, -2062)
+
+[node name="Building55" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1122, -2118)
+
+[node name="Building56" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1223, -2119)
+
+[node name="Building57" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1323, -2119)
+
+[node name="Building58" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1120, -2006)
+
+[node name="Building59" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1321, -2006)
+
+[node name="Building60" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3325, -1231)
+
+[node name="Building61" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3112, -1222)
+
+[node name="Building62" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3221, -1220)
+
+[node name="Building63" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2834, -1999)
+
+[node name="Building64" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2998, -1232)
+
+[node name="Building65" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2317, -1243)
+
+[node name="Building66" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2314, -1182)
+
+[node name="Building67" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2316, -1119)
+
+[node name="Building68" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2310, -1057)
+
+[node name="Building69" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3105, -1635)
+
+[node name="Building70" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2887, -1231)
+
+[node name="Building71" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2321, -1313)
+
+[node name="Building72" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2722, -1329)
+
+[node name="Building73" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2719, -1413)
+
+[node name="Building74" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3111, -1711)
+
+[node name="Building75" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3078, -2202)
+
+[node name="Building76" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3086, -2135)
+
+[node name="Building77" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3092, -2069)
+
+[node name="Building78" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3097, -1988)
+
+[node name="Building79" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3102, -1916)
+
+[node name="Building80" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3100, -1857)
+
+[node name="Building81" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3105, -1790)
+
+[node name="Building82" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2836, -1901)
+
+[node name="Building83" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(2843, -1800)
+
+[node name="Building84" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3497, -1568)
+
+[node name="Building85" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3493, -1634)
+
+[node name="Building86" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3611, -1565)
+
+[node name="Building87" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3611, -1638)
+
+[node name="Building88" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3607, -1707)
+
+[node name="Building89" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3607, -1777)
+
+[node name="Building90" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3607, -1850)
+
+[node name="Building91" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3391, -1568)
+
+[node name="Building92" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3608, -1493)
+
+[node name="Building93" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3504, -1494)
+
+[node name="Building94" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3608, -1418)
+
+[node name="Building95" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3607, -1350)
+
+[node name="Building96" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3507, -1426)
+
+[node name="Building97" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3398, -1501)
+
+[node name="Building98" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3395, -1419)
+
+[node name="Building99" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3717, -1414)
+
+[node name="Building100" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3720, -1503)
+
+[node name="Building101" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3717, -1563)
+
+[node name="Building102" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3723, -1630)
+
+[node name="Building103" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3828, -1498)
+
+[node name="Building104" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3607, -1285)
+
+[node name="Building105" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3824, -1424)
+
+[node name="Building106" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3716, -1346)
+
+[node name="Building107" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3602, -1222)
+
+[node name="Building108" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3608, -1154)
+
+[node name="Building109" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3715, -1226)
+
+[node name="Building110" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3820, -1226)
+
+[node name="Building111" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3924, -1218)
+
+[node name="Building112" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3611, -1082)
+
+[node name="Building113" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3498, -1077)
+
+[node name="Building114" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3497, -1012)
+
+[node name="Building115" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3494, -942)
+
+[node name="Building116" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3392, -1012)
+
+[node name="Building117" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3391, -947)
+
+[node name="Building118" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3382, -878)
+
+[node name="Building119" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3497, -875)
+
+[node name="Building120" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3393, -802)
+
+[node name="Building121" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3504, -803)
+
+[node name="Building122" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1266, -1406)
+
+[node name="Building123" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1369, -1402)
+
+[node name="Building124" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1162, -1406)
+
+[node name="Building125" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1265, -1349)
+
+[node name="Building126" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1163, -1349)
+
+[node name="Building127" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1371, -1344)
+
+[node name="Building128" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1059, -1349)
+
+[node name="Building129" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(1059, -1409)
+
+[node name="Building130" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(954, -1416)
+
+[node name="Building131" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(951, -1357)
+
+[node name="Building132" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3822, -1157)
+
+[node name="Building133" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3929, -1161)
+
+[node name="Building134" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3936, -1094)
+
+[node name="Building135" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3829, -1095)
+
+[node name="Building136" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3837, -1031)
+
+[node name="Building137" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3946, -1029)
+
+[node name="Building138" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3841, -962)
+
+[node name="Building139" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3587, -1914)
+
+[node name="Building140" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3472, -1918)
+
+[node name="Building141" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3473, -1991)
+
+[node name="Building142" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3588, -1990)
+
+[node name="Building143" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3475, -2066)
+
+[node name="Building144" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3586, -2059)
+
+[node name="Building145" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3699, -1917)
+
+[node name="Building146" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3695, -1994)
+
+[node name="Building147" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3693, -2062)
+
+[node name="Building148" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3801, -2002)
+
+[node name="Building149" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3480, -2123)
+
+[node name="Building150" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3368, -1995)
+
+[node name="Building151" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3373, -2062)
+
+[node name="Building152" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3593, -2128)
+
+[node name="Building153" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3580, -2190)
+
+[node name="Building154" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3700, -2127)
+
+[node name="Building155" parent="." instance=ExtResource("3_mlfew")]
+position = Vector2(3808, -2079)
