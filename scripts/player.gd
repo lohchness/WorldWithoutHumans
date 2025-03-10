@@ -28,6 +28,8 @@ signal gameover
 @onready var magnet_finish_attack_transition: Transition = $"WeaponStateChart/Weapons/A2/A2 Attacking/Transition"
 @onready var magnet_cooldown_finish_transition: Transition = $"WeaponStateChart/Weapons/A2/A2 Cooldown/Transition"
 
+@export var missileHotbar: Array[Sprite2D] = []
+
 var laser_on_cooldown = false
 var magnet_on_cooldown = false
 
@@ -52,12 +54,20 @@ func _physics_process(delta: float) -> void:
 		magnet_timer_background.visible = true
 		magnet_timer_text.visible = true
 		magnet_timer_text.text = str(ceil(magnet_cooldown_timer.time_left))
+	
+	for i in range(max_missiles):
+		if i <= current_missiles - 1:
+			missileHotbar[i].visible = true
+		else:
+			missileHotbar[i].visible = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_laser"):
 		weapon_sc.send_event("on_a1_attack")
 	if event.is_action_pressed("fire_magnet"):
 		weapon_sc.send_event("on_a2_attack")
+	if event.is_action_pressed("fire_missiles"):
+		fire_missiles()
 		
 
 func damage(amount: float) -> void:
@@ -114,3 +124,22 @@ func _on_ability_2_cooldown_timeout() -> void:
 	magnet_on_cooldown = false
 	magnet_timer_background.visible = false
 	magnet_timer_text.visible = false
+
+
+### Seeking missiles
+
+@onready var seekers: PackedScene = preload("res://scenes/seeking_missile.tscn")
+var max_missiles = 8
+var current_missiles = 0
+
+func fire_missiles():
+	for i in range(current_missiles):
+		var s = seekers.instantiate()
+		s.global_position = global_position
+		get_tree().root.add_child(s)
+		current_missiles = 0
+	
+func _on_missile_countdown_timeout() -> void:
+	if current_missiles >= max_missiles:
+		return
+	current_missiles += 1
