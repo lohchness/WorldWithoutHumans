@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpp7u0l3tqwhb"]
+[gd_scene load_steps=8 format=3 uid="uid://dpp7u0l3tqwhb"]
 
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="1_k27sb"]
-[ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="2_uijy8"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="4_4jelx"]
-[ext_resource type="PackedScene" uid="uid://c747frw0n8yce" path="res://scenes/infantry.tscn" id="4_jnhwy"]
-[ext_resource type="PackedScene" uid="uid://bym6dwufhuqxr" path="res://scenes/boss.tscn" id="5_aaspq"]
+[ext_resource type="PackedScene" uid="uid://c747frw0n8yce" path="res://scenes/infantry.tscn" id="4_55kj0"]
+[ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="5_8mohk"]
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="5_r7lba"]
+[ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="6_bi7f8"]
+[ext_resource type="PackedScene" uid="uid://lcqujtpkr4ni" path="res://scenes/fighter_jets.tscn" id="7_2ut0e"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,12 +18,6 @@ texture = ExtResource("5_r7lba")
 region_enabled = true
 region_rect = Rect2(-533.097, -1001.85, 5065.23, 3110.65)
 
-[node name="Building" parent="." instance=ExtResource("2_uijy8")]
-position = Vector2(765, 524)
-
-[node name="Building2" parent="." instance=ExtResource("2_uijy8")]
-position = Vector2(903, 525)
-
 [node name="Player" parent="." instance=ExtResource("1_k27sb")]
 position = Vector2(728, 410)
 
@@ -32,34 +27,75 @@ offset_left = 100.0
 offset_top = -241.0
 offset_right = 410.0
 offset_bottom = 162.0
-initial_node_to_watch = NodePath("../../Boss")
 
-[node name="Boss" parent="." instance=ExtResource("5_aaspq")]
-position = Vector2(679, 652)
+[node name="Infantry" parent="." instance=ExtResource("4_55kj0")]
+position = Vector2(1343, 454)
 
-[node name="Area2D" parent="." instance=ExtResource("2_uijy8")]
-position = Vector2(1022, 616)
+[node name="Infantry2" parent="." instance=ExtResource("4_55kj0")]
+position = Vector2(1461, 100)
 
-[node name="Area2D2" parent="." instance=ExtResource("2_uijy8")]
-position = Vector2(1050, 419)
+[node name="Infantry3" parent="." instance=ExtResource("4_55kj0")]
+position = Vector2(477, 503)
 
-[node name="Area2D3" parent="." instance=ExtResource("2_uijy8")]
-position = Vector2(883, 393)
+[node name="Building" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(547, 268)
 
-[node name="Area2D4" parent="." instance=ExtResource("2_uijy8")]
-position = Vector2(680, 332)
+[node name="Building2" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(718, 258)
 
-[node name="Area2D5" parent="." instance=ExtResource("2_uijy8")]
-position = Vector2(640, 435)
+[node name="Building3" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(848, 180)
 
-[node name="Infantry" parent="." instance=ExtResource("4_jnhwy")]
-position = Vector2(1215, 627)
+[node name="Building4" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(949, 44)
 
-[node name="Infantry2" parent="." instance=ExtResource("4_jnhwy")]
-position = Vector2(845, 742)
+[node name="Building5" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(737, 171)
 
-[node name="Infantry3" parent="." instance=ExtResource("4_jnhwy")]
-position = Vector2(488, 513)
+[node name="Building6" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(491, 196)
 
-[node name="Infantry4" parent="." instance=ExtResource("4_jnhwy")]
-position = Vector2(892, 305)
+[node name="Building7" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(421, 123)
+
+[node name="Building8" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(817, 29)
+
+[node name="Building9" parent="." instance=ExtResource("5_8mohk")]
+position = Vector2(430, 2)
+
+[node name="Artillery" parent="." instance=ExtResource("6_bi7f8")]
+position = Vector2(1217, 142)
+
+[node name="Artillery2" parent="." instance=ExtResource("6_bi7f8")]
+position = Vector2(-27, 445)
+
+[node name="Artillery3" parent="." instance=ExtResource("6_bi7f8")]
+position = Vector2(306, -356)
+
+[node name="Fighter Jets" parent="." instance=ExtResource("7_2ut0e")]
+position = Vector2(2238, 818)
+
+[node name="Fighter Jets2" parent="." instance=ExtResource("7_2ut0e")]
+position = Vector2(-414, 994)
+
+[node name="Fighter Jets3" parent="." instance=ExtResource("7_2ut0e")]
+position = Vector2(2607, -1309)
+
+[node name="Fighter Jets4" parent="." instance=ExtResource("7_2ut0e")]
+position = Vector2(-2979, -14)
+
+[node name="Fighter Jets5" parent="." instance=ExtResource("7_2ut0e")]
+position = Vector2(-1242, -1434)
+
+[node name="Infantry4" parent="." instance=ExtResource("4_55kj0")]
+position = Vector2(929, 637)
+
+[node name="Infantry5" parent="." instance=ExtResource("4_55kj0")]
+position = Vector2(948, 388)
+
+[node name="Infantry6" parent="." instance=ExtResource("4_55kj0")]
+position = Vector2(1165, 62)
+
+[node name="Infantry7" parent="." instance=ExtResource("4_55kj0")]
+position = Vector2(941, 203)
