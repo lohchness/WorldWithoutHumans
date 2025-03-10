@@ -19,7 +19,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ueoa"]
 size = Vector2(96, 48)
 
-[node name="Area2D" type="Area2D" groups=["Building"]]
+[node name="Building" type="Area2D" groups=["Building"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_hftu1")
