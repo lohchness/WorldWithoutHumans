@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgkv73fsaojsn"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_b3byq"]
+[ext_resource type="Texture2D" uid="uid://uoh7nk73wart" path="res://sprites/UI/MenuBackground.png" id="1_vanmh"]
+[ext_resource type="Texture2D" uid="uid://ch37xoq0d6xc1" path="res://sprites/UI/PlayButton.png" id="2_ato58"]
+[ext_resource type="Texture2D" uid="uid://d5icayftykgj" path="res://sprites/UI/MenuBuildings.png" id="2_clc3i"]
+[ext_resource type="Texture2D" uid="uid://chreflqkuw5fy" path="res://sprites/UI/MenuArt.png" id="3_fq4sm"]
+[ext_resource type="Texture2D" uid="uid://d13o75316r0i8" path="res://sprites/UI/QuitButton.png" id="3_pniwt"]
+[ext_resource type="Texture2D" uid="uid://cebuc4dnqr5ja" path="res://sprites/UI/MenuTitle.png" id="4_bjhlv"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b3byq")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vanmh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_clc3i")
+
+[node name="MenuArt" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fq4sm")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_bjhlv")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+offset_left = 794.0
+offset_top = 296.0
+offset_right = 1072.0
+offset_bottom = 668.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Play" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_ato58")
+
+[node name="Quit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_pniwt")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
