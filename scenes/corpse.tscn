@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckkwapqfuawap"]
+[gd_scene load_steps=7 format=3 uid="uid://ckkwapqfuawap"]
 
 [ext_resource type="Script" path="res://scripts/corpse.gd" id="1_xtl8q"]
 [ext_resource type="Texture2D" uid="uid://bm20hoeryibjy" path="res://sprites/Corpse1.png" id="2_ojv0n"]
@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://wf13n6cepthi" path="res://sprites/Corpse3.png" id="4_um7gq"]
 [ext_resource type="Texture2D" uid="uid://ctli37cni0r7x" path="res://sprites/Corpse4.png" id="5_v17eu"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wveob"]
+radius = 5.0
+
 [node name="Corpse" type="Sprite2D" groups=["Corpse"]]
 script = ExtResource("1_xtl8q")
 corpsesprites = Array[Texture]([ExtResource("2_ojv0n"), ExtResource("3_dwpay"), ExtResource("4_um7gq"), ExtResource("5_v17eu")])
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wveob")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

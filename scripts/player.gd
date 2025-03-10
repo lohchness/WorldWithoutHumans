@@ -69,3 +69,6 @@ func _on_a_2_attacking_state_exited() -> void:
 func _on_magnet_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Infantry"):
 		body.die()
+
+func picked_up_corpse():
+	print("hello")
