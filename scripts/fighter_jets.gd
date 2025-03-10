@@ -25,7 +25,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	if move_and_slide():
-		target.damage(5)
+		target.damage(4)
 		
 		var s = explosion_scene.instantiate()
 		s.global_position = global_position
