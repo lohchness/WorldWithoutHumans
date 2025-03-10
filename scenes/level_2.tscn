@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://deuwtx23lm0so"]
+[gd_scene load_steps=7 format=3 uid="uid://deuwtx23lm0so"]
 
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_fef35"]
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="2_8hly2"]
 [ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="3_dyjc6"]
 [ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="4_qilur"]
 [ext_resource type="PackedScene" uid="uid://c747frw0n8yce" path="res://scenes/infantry.tscn" id="5_lbvvw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvwnx"]
+size = Vector2(5008.75, 111)
 
 [node name="Level2" type="Node2D"]
 
@@ -199,6 +202,300 @@ position = Vector2(2883, -2774)
 [node name="Artillery2" parent="Buildings" instance=ExtResource("3_dyjc6")]
 position = Vector2(2890, -2705)
 
+[node name="Building56" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1430, -3388)
+
+[node name="Building57" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1433, -3467)
+
+[node name="Building58" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1430, -3556)
+
+[node name="Building59" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1400, -2236)
+
+[node name="Building60" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1287, -2243)
+
+[node name="Building61" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1287, -2347)
+
+[node name="Building62" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1284, -2446)
+
+[node name="Building63" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1284, -2542)
+
+[node name="Building64" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1283, -2641)
+
+[node name="Building65" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1280, -2746)
+
+[node name="Building66" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1280, -2848)
+
+[node name="Building67" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1278, -2951)
+
+[node name="Building68" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1280, -3033)
+
+[node name="Building69" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1185, -2449)
+
+[node name="Building70" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1179, -2547)
+
+[node name="Building71" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1179, -2646)
+
+[node name="Building72" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1178, -2753)
+
+[node name="Building73" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1177, -2849)
+
+[node name="Building74" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1175, -2952)
+
+[node name="Building75" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1170, -3046)
+
+[node name="Building76" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3350, -2230)
+
+[node name="Building77" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3462, -2239)
+
+[node name="Building78" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3457, -2330)
+
+[node name="Building79" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3452, -2430)
+
+[node name="Building80" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3448, -2536)
+
+[node name="Building81" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3444, -2638)
+
+[node name="Building82" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3444, -2743)
+
+[node name="Building83" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3444, -2847)
+
+[node name="Building84" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3449, -2938)
+
+[node name="Building85" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3452, -3016)
+
+[node name="Building86" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3576, -2246)
+
+[node name="Building87" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3569, -2345)
+
+[node name="Building88" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3570, -2450)
+
+[node name="Building89" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3554, -2551)
+
+[node name="Building90" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1540, -3468)
+
+[node name="Building91" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1539, -3557)
+
+[node name="Building92" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1537, -3641)
+
+[node name="Building93" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1650, -3554)
+
+[node name="Building94" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1643, -3645)
+
+[node name="Building95" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1643, -3734)
+
+[node name="Building96" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1764, -3660)
+
+[node name="Building97" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1757, -3569)
+
+[node name="Building98" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1884, -3579)
+
+[node name="Building99" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1990, -3581)
+
+[node name="Building100" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2109, -3581)
+
+[node name="Building101" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2114, -3671)
+
+[node name="Building102" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2225, -3670)
+
+[node name="Building103" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2235, -3591)
+
+[node name="Building104" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3367, -3751)
+
+[node name="Building105" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3369, -3841)
+
+[node name="Building106" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3309, -3685)
+
+[node name="Building107" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3429, -3687)
+
+[node name="Building108" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3242, -3620)
+
+[node name="Building109" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3241, -3544)
+
+[node name="Building110" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3129, -3550)
+
+[node name="Building111" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3036, -3653)
+
+[node name="Building112" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3015, -3567)
+
+[node name="Building113" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2936, -3674)
+
+[node name="Building114" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3534, -3682)
+
+[node name="Building115" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3530, -3615)
+
+[node name="Building116" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3634, -3616)
+
+[node name="Building117" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3642, -3543)
+
+[node name="Building118" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3628, -3471)
+
+[node name="Building119" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3560, -3405)
+
+[node name="Building120" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3678, -3389)
+
+[node name="Building121" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3373, -3923)
+
+[node name="Building122" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3539, -3542)
+
+[node name="Building123" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3140, -3647)
+
+[node name="Building124" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3266, -3768)
+
+[node name="Building125" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3376, -4017)
+
+[node name="Building126" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3381, -4110)
+
+[node name="Building127" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2730, -4407)
+
+[node name="Building128" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2842, -4408)
+
+[node name="Building129" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2626, -4404)
+
+[node name="Building130" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2518, -4405)
+
+[node name="Building131" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3264, -3874)
+
+[node name="Building132" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3262, -3959)
+
+[node name="Building133" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3263, -4037)
+
+[node name="Building134" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3275, -4137)
+
+[node name="Building135" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2111, -4542)
+
+[node name="Building136" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2221, -4549)
+
+[node name="Building137" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2214, -4643)
+
+[node name="Building138" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(2111, -4644)
+
+[node name="Building139" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3373, -4769)
+
+[node name="Building140" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3265, -4768)
+
+[node name="Building141" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3160, -4768)
+
+[node name="Building142" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3049, -4765)
+
+[node name="Building143" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3053, -4839)
+
+[node name="Building144" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3053, -4915)
+
+[node name="Building145" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3490, -4777)
+
+[node name="Building146" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3604, -4777)
+
+[node name="Building147" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3609, -4869)
+
+[node name="Building148" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3607, -4962)
+
+[node name="Building149" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3057, -5009)
+
+[node name="Building150" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3058, -5092)
+
+[node name="Building151" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3058, -5174)
+
+[node name="Building152" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3051, -5256)
+
+[node name="Building153" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(3054, -5352)
+
 [node name="Artillery" type="Node2D" parent="."]
 
 [node name="Artillery" parent="Artillery" instance=ExtResource("3_dyjc6")]
@@ -240,47 +537,209 @@ position = Vector2(1700, -2680)
 [node name="Artillery13" parent="Artillery" instance=ExtResource("3_dyjc6")]
 position = Vector2(1700, -2740)
 
-[node name="Infantry" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Artillery14" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(1408, -4549)
+
+[node name="Artillery15" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(2722, -4523)
+
+[node name="Artillery16" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(4038, -4517)
+
+[node name="Artillery17" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(2072, -5383)
+
+[node name="Artillery18" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(3336, -5414)
+
+[node name="Artillery19" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(2704, -5100)
+
+[node name="Infantry" type="Node2D" parent="."]
+
+[node name="Infantry" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(1657, -2023)
 
-[node name="Infantry2" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry2" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(1911, -2017)
 
-[node name="Infantry3" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry3" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(2149, -2019)
 
-[node name="Infantry4" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry4" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(2397, -2012)
 
-[node name="Infantry5" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry5" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(2620, -2004)
 
-[node name="Infantry6" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry6" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(2852, -1995)
 
-[node name="Infantry7" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry7" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(3094, -1995)
 
-[node name="Infantry8" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry8" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(1402, -1354)
 
-[node name="Infantry9" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry9" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(1338, -1281)
 
-[node name="Infantry10" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry10" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(1281, -1176)
 
-[node name="Infantry11" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry11" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(1288, -1055)
 
-[node name="Infantry12" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry12" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(3481, -1471)
 
-[node name="Infantry13" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry13" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(3643, -1382)
 
-[node name="Infantry14" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry14" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(3789, -1265)
 
-[node name="Infantry15" parent="." instance=ExtResource("5_lbvvw")]
+[node name="Infantry15" parent="Infantry" instance=ExtResource("5_lbvvw")]
 position = Vector2(3837, -1119)
+
+[node name="JetfighterTrigger" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JetfighterTrigger"]
+position = Vector2(2362, -3182)
+shape = SubResource("RectangleShape2D_lvwnx")
+
+[node name="Infantry2" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3214, -5055)
+
+[node name="Infantry3" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3215, -4904)
+
+[node name="Infantry4" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3392, -5167)
+
+[node name="Infantry5" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3404, -4962)
+
+[node name="Infantry6" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3515, -5047)
+
+[node name="Infantry7" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3326, -5020)
+
+[node name="Infantry8" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3217, -5178)
+
+[node name="Infantry9" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3149, -5054)
+
+[node name="Infantry10" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3153, -4938)
+
+[node name="Infantry11" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3337, -4876)
+
+[node name="Infantry12" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3569, -5248)
+
+[node name="Infantry13" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2603, -4642)
+
+[node name="Infantry14" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2825, -4593)
+
+[node name="Infantry15" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2503, -4519)
+
+[node name="Infantry16" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2967, -4508)
+
+[node name="Infantry17" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2261, -4818)
+
+[node name="Infantry18" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2140, -4833)
+
+[node name="Infantry19" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2034, -4859)
+
+[node name="Infantry20" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2058, -4760)
+
+[node name="Infantry21" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1751, -3825)
+
+[node name="Infantry22" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2016, -3904)
+
+[node name="Infantry23" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1475, -3821)
+
+[node name="Infantry24" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2002, -3760)
+
+[node name="Infantry25" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3120, -3850)
+
+[node name="Infantry26" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3491, -4281)
+
+[node name="Infantry27" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3580, -4090)
+
+[node name="Infantry28" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3681, -3868)
+
+[node name="Infantry29" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3522, -3931)
+
+[node name="Infantry30" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2420, -3819)
+
+[node name="Infantry31" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1339, -4762)
+
+[node name="Infantry32" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1518, -4804)
+
+[node name="Infantry33" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1637, -3259)
+
+[node name="Infantry34" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2031, -3266)
+
+[node name="Infantry35" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2340, -3256)
+
+[node name="Infantry36" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2646, -3249)
+
+[node name="Infantry37" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2993, -3256)
+
+[node name="Infantry38" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1839, -3071)
+
+[node name="Infantry39" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2475, -3024)
+
+[node name="Infantry40" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3191, -3004)
+
+[node name="Infantry41" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3359, -3283)
+
+[node name="Infantry42" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1439, -3054)
+
+[node name="Infantry43" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(2710, -3700)
+
+[node name="Infantry44" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1210, -3518)
+
+[node name="Infantry45" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(3851, -3592)
+
+[node name="Infantry46" parent="." instance=ExtResource("5_lbvvw")]
+position = Vector2(1227, -5327)
