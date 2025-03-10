@@ -12,7 +12,7 @@ var corpse_scene: PackedScene = preload("res://scenes/corpse.tscn")
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 	$Gunfire.visible = false
-	$Timer.wait_time = randf_range(2, 5)
+	$Timer.wait_time = randf_range(1, 3)
 
 func _physics_process(delta: float) -> void:
 	var dir = global_position.direction_to(target.marker.global_position)
@@ -26,7 +26,7 @@ func _on_timer_timeout() -> void:
 		$Gunfire.visible = true
 		$Gunfirevisible.start()
 		target.damage(dmg)
-	$Timer.wait_time = randf_range(2, 5)
+	$Timer.wait_time = randf_range(1, 3)
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
