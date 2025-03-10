@@ -72,7 +72,8 @@ func _input(event: InputEvent) -> void:
 		weapon_sc.send_event("on_a2_attack")
 	if event.is_action_pressed("fire_missiles"):
 		fire_missiles()
-		
+	if event.is_action_pressed("use_healing"):
+		convert_humans()
 
 func damage(amount: float) -> void:
 	health -= amount
@@ -113,12 +114,6 @@ func _on_a_2_attacking_state_exited() -> void:
 	magnet_area.monitoring = false
 	magnet_sprite.visible = false
 
-func _on_magnet_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Infantry"):
-		body.die()
-
-func picked_up_corpse():
-	humans_consumed += 1
 
 func _on_ability_1_cooldown_timeout() -> void:
 	laser_on_cooldown = false
@@ -149,3 +144,23 @@ func _on_missile_countdown_timeout() -> void:
 	if current_missiles >= max_missiles:
 		return
 	current_missiles += 1
+
+## Convert humans to health
+
+
+func _on_magnet_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Infantry"):
+		body.die()
+
+func picked_up_corpse():
+	if health + humans_consumed > 100:
+		return
+	humans_consumed += 1
+	healthbar.update_humanpercent(humans_consumed / 100.0)
+
+func convert_humans():
+	print(str(humans_consumed) + "humans consumed")
+	health += humans_consumed
+	humans_consumed = 0
+	healthbar.update_healthpercent(health / maxhealth)
+	healthbar.update_humanpercent(humans_consumed / 100.0) 

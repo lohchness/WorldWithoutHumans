@@ -14,9 +14,12 @@ position = Vector2(-145, -9)
 texture = ExtResource("1_wy0oa")
 centered = false
 
-[node name="HumanBar" type="Sprite2D" parent="Red"]
+[node name="Node2D" type="Node2D" parent="Red"]
+position = Vector2(290, 0)
+
+[node name="HumanBar" type="Sprite2D" parent="."]
 z_as_relative = false
-position = Vector2(285.972, 0)
+position = Vector2(142, -9)
 scale = Vector2(0.00694444, 1)
 texture = ExtResource("2_xud46")
 centered = false
