@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4nx0quhrkkm3"]
+
+[ext_resource type="Texture2D" uid="uid://bbi2nwyr7y1lq" path="res://sprites/SeekingMissile.png" id="1_2jm71"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j8ig"]
+size = Vector2(25, 5)
+
+[node name="SeekingMissile" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -3)
+rotation = 1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("1_2jm71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, -0.5)
+shape = SubResource("RectangleShape2D_1j8ig")
