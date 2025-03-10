@@ -52,3 +52,11 @@ func _on_fire_cooldown_timeout() -> void:
 	get_tree().root.add_child(s)
 	
 	num_fired += 1
+
+var near_player = false
+@onready var nyooom: AudioStreamPlayer2D = $Nyooom
+
+func _on_nyooom_trigger_body_entered(body: Node2D) -> void:
+	if not near_player:
+		near_player = true
+		nyooom.play()
