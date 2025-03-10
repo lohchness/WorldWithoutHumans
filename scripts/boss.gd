@@ -186,6 +186,7 @@ func _on_p_2_attack_actual_state_physics_processing(delta: float) -> void:
 	if target_in_p2_hurtbox:
 		target.damage(laser_damage)
 		target_in_p2_hurtbox = false
+		print("Player hit by laser")
 	
 	# Laser destroy building
 	var areas = laserarea.get_overlapping_areas()
@@ -261,6 +262,7 @@ func _on_p_3_dash_attack_state_entered() -> void:
 	p3_dash_attack_timer = 0
 	p3_current_dashes += 1
 	p3_dash_attack_vector = global_position.direction_to(target.global_position)
+	
 
 func _on_p_3_dash_attack_state_physics_processing(delta: float) -> void:
 	p3_dash_attack_timer += delta
@@ -281,6 +283,7 @@ func _on_p_3_dash_attack_state_exited() -> void:
 
 @onready var p3_laser_windup = $P3LaserBeam/LaserBeamWindup
 @onready var p3_laser_actual = $P3LaserBeam/LaserBeamActual
+@onready var p3_laserarea: Area2D = $P3LaserBeam/P3_LaserHurtbox
 
 func _on_p_3_attack_windup_state_entered() -> void:
 	modulate_timer = 0
@@ -299,6 +302,8 @@ func _on_p_3_attack_windup_state_exited() -> void:
 func _on_p_3_attack_actual_state_entered() -> void:
 	modulate_timer = 0
 	p3_laser_actual.visible = true
+	
+	p3_laserarea.monitoring = true
 
 func _on_p_3_attack_actual_state_physics_processing(delta: float) -> void:
 	modulate_timer += delta
@@ -307,19 +312,28 @@ func _on_p_3_attack_actual_state_physics_processing(delta: float) -> void:
 	p3_laser_actual.set("modulate", Color(1,1,1,alpha))
 	
 	# Damage player once 
-	if target_in_p2_hurtbox:
+	if target_in_p3_hurtbox:
 		target.damage(laser_damage)
-		target_in_p2_hurtbox = false
+		target_in_p3_hurtbox = false
+		print("Player hit by laser")
+	
+	# Laser destroy building
+	var areas = p3_laserarea.get_overlapping_areas()
+	for i in areas:
+		if i.has_method("destroy"):
+			i.destroy()
 
 func _on_p_3_attack_actual_state_exited() -> void:
 	p3_laser_actual.visible = false
+	
+	p3_laserarea.monitoring = false
 
 var target_in_p3_hurtbox = false
 
 func _on_p_3_laser_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		target_in_p2_hurtbox = true
+		target_in_p3_hurtbox = true
 
 func _on_p_3_laser_hurtbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		target_in_p2_hurtbox = false
+		target_in_p3_hurtbox = false
