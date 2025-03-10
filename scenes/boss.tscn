@@ -340,7 +340,7 @@ script = ExtResource("3_sux2h")
 
 [node name="Phases" type="Node" parent="PhaseStateChart"]
 script = ExtResource("4_5m5dw")
-initial_state = NodePath("Phase 3")
+initial_state = NodePath("Phase 0")
 
 [node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
