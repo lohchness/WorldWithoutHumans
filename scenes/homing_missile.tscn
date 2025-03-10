@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmaqiak23n0ai" path="res://sprites/HomingMissile.png" id="1_a7k3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6j8ie"]
-size = Vector2(5, 25)
+size = Vector2(4.99991, 25)
 
 [node name="HomingMissile" type="CharacterBody2D"]
 collision_layer = 16
@@ -12,12 +12,12 @@ collision_mask = 17
 script = ExtResource("1_1f2li")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, -2)
+position = Vector2(3, -3)
 rotation = 1.5708
 scale = Vector2(5, 5)
 texture = ExtResource("1_a7k3q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(5.5, -0.5)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6j8ie")
