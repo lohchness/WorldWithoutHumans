@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4nx0quhrkkm3"]
+[gd_scene load_steps=4 format=3 uid="uid://c4nx0quhrkkm3"]
 
 [ext_resource type="Texture2D" uid="uid://bbi2nwyr7y1lq" path="res://sprites/SeekingMissile.png" id="1_2jm71"]
+[ext_resource type="Script" path="res://scripts/seeking_missile.gd" id="1_16vfo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1j8ig"]
 size = Vector2(25, 5)
 
 [node name="SeekingMissile" type="CharacterBody2D"]
+script = ExtResource("1_16vfo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, -3)
