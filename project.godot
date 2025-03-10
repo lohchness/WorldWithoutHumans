@@ -28,6 +28,7 @@ enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
 Player=""
 Building=""
 Infantry=""
+Corpse=""
 
 [input]
 
@@ -90,6 +91,7 @@ use_healing={
 2d_physics/layer_9="Enemy Boss Laser"
 2d_physics/layer_10="Enemy Infantry"
 2d_physics/layer_11="Player Magnet"
+2d_physics/layer_12="Enemy Corpse"
 
 [rendering]
 
