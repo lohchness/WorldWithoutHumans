@@ -21,12 +21,11 @@ func _ready() -> void:
 	boss.connect("dead", on_boss_death)
 
 var origpos: Vector2
-var targpos = Vector2(0, -290)
+var targpos = Vector2(0, -230)
 var healthon = false
 
 func _physics_process(delta: float) -> void:
 	if healthon:
-		print("hi")
 		boss_hp_bar.position = lerp(boss_hp_bar.position, targpos, 5 * delta)
 	
 	if bossdead:
@@ -38,6 +37,7 @@ func move_hp_bar():
 	#targpos = origpos + Vector2(0, 63)
 	#print("New position: " + str(origpos + targpos))
 	print("here")
+	print(targpos)
 	healthon = true
 
 func _on_infarty_timer_timeout() -> void:
