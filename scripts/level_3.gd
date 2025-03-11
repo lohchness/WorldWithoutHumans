@@ -49,5 +49,5 @@ func unpause():
 	$Player/Camera2D/PauseMenu.hide()
 
 func quit():
-
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://deuwtx23lm0so"]
+[gd_scene load_steps=9 format=3 uid="uid://deuwtx23lm0so"]
 
 [ext_resource type="Script" path="res://scripts/level_2.gd" id="1_1im03"]
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_fef35"]
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="2_8hly2"]
 [ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="3_dyjc6"]
+[ext_resource type="PackedScene" uid="uid://cwfl1o45t8ds6" path="res://scenes/pause_menu.tscn" id="4_omowv"]
 [ext_resource type="PackedScene" uid="uid://dm3weibbxoa3" path="res://scenes/building.tscn" id="4_qilur"]
 [ext_resource type="PackedScene" uid="uid://c747frw0n8yce" path="res://scenes/infantry.tscn" id="5_lbvvw"]
 
@@ -30,6 +31,9 @@ limit_left = 0
 limit_top = -6000
 limit_right = 4750
 limit_bottom = 0
+
+[node name="PauseMenu" parent="Player/Camera2D2" instance=ExtResource("4_omowv")]
+z_index = 2
 
 [node name="Buildings" type="Node2D" parent="."]
 
