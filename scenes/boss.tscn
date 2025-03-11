@@ -354,7 +354,7 @@ script = ExtResource("3_sux2h")
 
 [node name="Phases" type="Node" parent="PhaseStateChart"]
 script = ExtResource("4_5m5dw")
-initial_state = NodePath("Phase 3")
+initial_state = NodePath("Phase 0")
 
 [node name="Phase 0" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("4_5m5dw")
@@ -477,6 +477,12 @@ wait_time = 8.0
 [node name="P2 Big Arty Fire Separation" type="Timer" parent="PhaseStateChart/Phases/Phase 2"]
 wait_time = 0.5
 
+[node name="Transition" type="Node" parent="PhaseStateChart/Phases/Phase 2"]
+script = ExtResource("6_u1uje")
+to = NodePath("../../Phase 3")
+event = &"on_phase_2_finish"
+delay_in_seconds = "0.0"
+
 [node name="Phase 3" type="Node" parent="PhaseStateChart/Phases"]
 script = ExtResource("13_ctt1c")
 
@@ -561,6 +567,7 @@ stream = ExtResource("14_vajwq")
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 1/Stationary" to="." method="_on_stationary_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_entered"]
 [connection signal="state_exited" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_exited"]
+[connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2" to="." method="_on_phase_2_state_physics_processing"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Movement/Brisk" to="." method="_on_brisk_state_physics_processing"]
 [connection signal="state_entered" from="PhaseStateChart/Phases/Phase 2/Movement/Windup" to="." method="_on_windup_state_entered"]
 [connection signal="state_physics_processing" from="PhaseStateChart/Phases/Phase 2/Movement/Windup" to="." method="_on_windup_state_physics_processing"]

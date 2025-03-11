@@ -13,7 +13,8 @@ const PHASE_3_ACCEL = 2
 var speed: float
 var accel: float
 
-var health: float = 100.0
+var health: float = 400.0
+var max_health: float = 400.0
 var laser_damage = 30
 
 @onready var phases_sc: StateChart = $PhaseStateChart
@@ -34,6 +35,9 @@ var target_acquired = false
 @onready var torso_and_legs: Sprite2D = $"Body Sprites/Torso and Legs"
 @onready var left_arm: Sprite2D = $"Body Sprites/Left Arm"
 @onready var face: Sprite2D = $"Body Sprites/Face"
+
+var immune = true
+signal player_detected
 
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
@@ -64,9 +68,11 @@ func _physics_process(delta: float) -> void:
 signal health_changed(new_health: float)
 
 func damage(dmg):
+	if immune:
+		return
 	health -= dmg
 	print(health)
-	health_changed.emit(health/100.0)
+	health_changed.emit(health/max_health)
 
 ## PHASE 0
 
@@ -80,6 +86,7 @@ func _on_chilling_state_physics_processing(delta: float) -> void:
 
 func _on_player_detected_state_entered() -> void:
 	face_sprite.texture = surprised_face
+	
 
 ## PHASE 1
 
@@ -90,6 +97,8 @@ var big_warning: PackedScene = preload("res://scenes/big_warning.tscn")
 
 func _on_phase_1_state_entered() -> void:
 	face_sprite.texture = happy_face
+	player_detected.emit()
+	immune = false
 
 func _on_walk_state_physics_processing(delta: float) -> void:
 	var dir = (target.global_position - global_position).normalized()
@@ -115,7 +124,8 @@ func _on_stationary_state_exited() -> void:
 	get_tree().root.add_child(s)
 
 func _on_phase_1_state_physics_processing(delta: float) -> void:
-	if health <= 50.0:
+	if health / max_health <= 0.6:
+		
 		phases_sc.send_event("on_phase_1_finish")
 
 ## PHASE 2
@@ -137,6 +147,10 @@ func _on_phase_2_state_entered() -> void:
 	accel = PHASE_2_ACCEL
 	face_sprite.texture = annoyed_face
 	$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Cooldown".start()
+
+func _on_phase_2_state_physics_processing(delta: float) -> void:
+	if health / max_health <= 0.2:
+		phases_sc.send_event("on_phase_2_finish")
 
 func _on_brisk_state_physics_processing(delta: float) -> void:
 	var dir = (target.global_position - global_position).normalized()
