@@ -564,6 +564,12 @@ position = Vector2(1399, -4456)
 [node name="Building175" parent="Buildings" instance=ExtResource("4_qilur")]
 position = Vector2(1291, -4458)
 
+[node name="Building176" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1291, -4535)
+
+[node name="Building177" parent="Buildings" instance=ExtResource("4_qilur")]
+position = Vector2(1296, -4618)
+
 [node name="Artillery" type="Node2D" parent="."]
 
 [node name="Artillery" parent="Artillery" instance=ExtResource("3_dyjc6")]
@@ -623,11 +629,17 @@ position = Vector2(3336, -5414)
 [node name="Artillery19" parent="Artillery" instance=ExtResource("3_dyjc6")]
 position = Vector2(2704, -5100)
 
-[node name="Building" parent="Artillery" instance=ExtResource("4_qilur")]
-position = Vector2(1291, -4535)
+[node name="Artillery20" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(2031, -5409)
 
-[node name="Building2" parent="Artillery" instance=ExtResource("4_qilur")]
-position = Vector2(1296, -4618)
+[node name="Artillery21" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(2090, -5430)
+
+[node name="Artillery22" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(3389, -5401)
+
+[node name="Artillery23" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(3373, -5441)
 
 [node name="Infantry" type="Node2D" parent="."]
 
