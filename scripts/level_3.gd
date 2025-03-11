@@ -34,7 +34,7 @@ func _on_infarty_timer_timeout() -> void:
 	for i in range(2):
 		var s = infantry.instantiate()
 		s.global_transform = infantry_spawners.pick_random().global_transform
-		get_tree().root.add_child(s)
+		get_tree().root.get_child(0).add_child(s)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -49,5 +49,5 @@ func unpause():
 	$Player/Camera2D/PauseMenu.hide()
 
 func quit():
-	get_tree().paused = false
+
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

@@ -83,15 +83,15 @@ func damage(dmg):
 		health = 0
 		var s = BOSS_CORPSE.instantiate()
 		s.global_position = global_position
-		get_tree().root.add_child(s)
+		get_tree().root.get_child(0).add_child(s)
 		
 		var v = FLAK_BURST.instantiate()
 		v.global_position = global_position
-		get_tree().root.add_child(v)
+		get_tree().root.get_child(0).add_child(v)
 		
 		var t = EXPLOSION_MEDIUM.instantiate()
 		t.global_position = global_position
-		get_tree().root.add_child(t)
+		get_tree().root.get_child(0).add_child(t)
 		
 		queue_free()
 		
@@ -146,7 +146,7 @@ func _on_stationary_state_exited() -> void:
 	
 	var s: Node2D = big_warning.instantiate()
 	s.global_position = target.global_position + target.velocity / 3
-	get_tree().root.add_child(s)
+	get_tree().root.get_child(0).add_child(s)
 
 func _on_phase_1_state_physics_processing(delta: float) -> void:
 	if health / max_health <= 0.6:
@@ -275,7 +275,7 @@ func _on_p_2_big_arty_fire_separation_timeout() -> void:
 	p2_missiles_fired += 1
 	var s: Node2D = big_warning.instantiate()
 	s.global_position = target.global_position
-	get_tree().root.add_child(s)
+	get_tree().root.get_child(0).add_child(s)
 	if p2_missiles_fired == p2_missiles_total:
 		$"PhaseStateChart/Phases/Phase 2/P2 Big Arty Fire Separation".stop()
 		p2_missiles_fired = 0

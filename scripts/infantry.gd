@@ -46,7 +46,7 @@ func die():
 	for i in randi_range(2, 8):
 		var s = corpse_scene.instantiate()
 		s.global_position = global_position + Vector2(randf_range(-5, 5), randf_range(-5, 5))
-		get_tree().root.add_child(s)
+		get_tree().root.get_child(0).add_child(s)
 	
 	queue_free()
 

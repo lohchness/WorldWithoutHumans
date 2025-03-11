@@ -143,7 +143,7 @@ func fire_missiles():
 	for i in range(current_missiles):
 		var s = seekers.instantiate()
 		s.global_position = global_position
-		get_tree().root.add_child(s)
+		get_tree().root.get_child(0).add_child(s)
 		current_missiles = 0
 	
 func _on_missile_countdown_timeout() -> void:

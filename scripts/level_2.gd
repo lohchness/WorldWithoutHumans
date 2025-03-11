@@ -19,4 +19,4 @@ func _on_jetfighter_timer_timeout() -> void:
 	for i in range(2):
 		var s = jet.instantiate()
 		s.global_transform = jet_spawners.pick_random().global_transform
-		get_tree().root.add_child(s)
+		get_tree().root.get_child(0).add_child(s)

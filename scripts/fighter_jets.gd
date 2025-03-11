@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		
 		var s = explosion_scene.instantiate()
 		s.global_position = global_position
-		get_tree().root.add_child(s)
+		get_tree().root.get_child(0).add_child(s)
 		
 		queue_free()
 
@@ -49,7 +49,7 @@ func _on_fire_cooldown_timeout() -> void:
 	
 	var s = missile_scene.instantiate()
 	s.global_position = global_position
-	get_tree().root.add_child(s)
+	get_tree().root.get_child(0).add_child(s)
 	
 	num_fired += 1
 

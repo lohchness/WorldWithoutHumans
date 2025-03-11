@@ -18,7 +18,7 @@ func _on_explode_timer_timeout() -> void:
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position
 		explosion.scale = Vector2(3,3)
-		get_tree().get_root().add_child(explosion)
+		get_tree().root.get_child(0).add_child(explosion)
 	
 	queue_free()
 

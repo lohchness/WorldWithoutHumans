@@ -34,7 +34,7 @@ func fire_artillery():
 	var s: Node2D = warning.instantiate()
 	# Spawn Warning ahead of where player is moving
 	s.global_position = target.global_position + target.velocity / 2
-	get_tree().root.add_child(s)
+	get_tree().root.get_child(0).add_child(s)
 
 func _on_attack_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"): 
@@ -56,5 +56,5 @@ func destroy():
 	if explosion_scene != null:
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position
-		get_tree().get_root().add_child(explosion)
+		get_tree().root.get_child(0).add_child(explosion)
 	queue_free()
