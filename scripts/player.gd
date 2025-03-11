@@ -55,6 +55,7 @@ func _physics_process(delta: float) -> void:
 	
 	## Update ability hotbar
 	if laser_on_cooldown:
+		$laser.play()
 		laser_timer_background.visible = true
 		laser_timer_text.visible = true
 		laser_timer_text.text = str(ceil(laser_cooldown_timer.time_left))
@@ -77,7 +78,6 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_laser"):
-		$laser.play()
 		weapon_sc.send_event("on_a1_attack")
 	if event.is_action_pressed("fire_magnet"):
 		weapon_sc.send_event("on_a2_attack")
