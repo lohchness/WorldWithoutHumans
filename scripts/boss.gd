@@ -13,6 +13,7 @@ const PHASE_3_ACCEL = 2
 var speed: float
 var accel: float
 
+# Sweet spot 400
 var health: float = 400.0
 var max_health: float = 400.0
 var laser_damage = 30
@@ -35,6 +36,11 @@ var target_acquired = false
 @onready var torso_and_legs: Sprite2D = $"Body Sprites/Torso and Legs"
 @onready var left_arm: Sprite2D = $"Body Sprites/Left Arm"
 @onready var face: Sprite2D = $"Body Sprites/Face"
+
+const BOSS_CORPSE = preload("res://scenes/boss_corpse.tscn")
+const EXPLOSION_MEDIUM = preload("res://scenes/ExplosionMedium.tscn")
+const FLAK_BURST = preload("res://scenes/FlakBurst.tscn")
+
 
 var immune = true
 signal player_detected
@@ -70,9 +76,28 @@ signal health_changed(new_health: float)
 func damage(dmg):
 	if immune:
 		return
+	
 	health -= dmg
-	print(health)
+	
+	if health <= 0:
+		health = 0
+		var s = BOSS_CORPSE.instantiate()
+		s.global_position = global_position
+		get_tree().root.add_child(s)
+		
+		var v = FLAK_BURST.instantiate()
+		v.global_position = global_position
+		get_tree().root.add_child(v)
+		
+		var t = EXPLOSION_MEDIUM.instantiate()
+		t.global_position = global_position
+		get_tree().root.add_child(t)
+		
+		queue_free()
+		
+	
 	health_changed.emit(health/max_health)
+	
 
 ## PHASE 0
 
@@ -379,3 +404,7 @@ func _on_p_3_laser_hurtbox_body_entered(body: Node2D) -> void:
 func _on_p_3_laser_hurtbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		target_in_p3_hurtbox = false
+
+
+func _on_phase_3_state_physics_processing(delta: float) -> void:
+	pass # Replace with function body.
