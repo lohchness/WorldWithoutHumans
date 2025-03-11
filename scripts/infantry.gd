@@ -8,6 +8,7 @@ var attack_cooldown = 5
 var attack_timer: float = 0.0
 
 var corpse_scene: PackedScene = preload("res://scenes/corpse.tscn")
+@onready var bambambam: AudioStreamPlayer2D = $bambambam
 
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if target_acquired:
+		bambambam.play()
 		$Gunfire.visible = true
 		$Gunfirevisible.start()
 		target.damage(dmg)

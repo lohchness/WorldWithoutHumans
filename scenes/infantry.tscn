@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c747frw0n8yce"]
+[gd_scene load_steps=7 format=3 uid="uid://c747frw0n8yce"]
 
 [ext_resource type="Script" path="res://scripts/infantry.gd" id="1_68kqu"]
 [ext_resource type="Texture2D" uid="uid://dd2ru4wpfouxr" path="res://sprites/Infantry.png" id="2_8n5d7"]
 [ext_resource type="Texture2D" uid="uid://bte1ud7olxvsx" path="res://sprites/Gunfire.png" id="3_bpp7w"]
+[ext_resource type="AudioStream" uid="uid://ccnub1lyhsaey" path="res://sounds/bambambam.wav" id="4_0krsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pvx7r"]
 size = Vector2(32, 41)
@@ -38,6 +39,10 @@ texture = ExtResource("3_bpp7w")
 [node name="Gunfirevisible" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="bambambam" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0krsr")
+volume_db = -15.0
 
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
