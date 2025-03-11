@@ -3,6 +3,7 @@ extends Node2D
 var infantry_spawners: Array
 @onready var infantry = preload("res://scenes/infantry.tscn")
 @onready var boss_hp_bar: BossHPBar = $"Player/Camera2D/Boss HP Bar"
+@onready var pause_menu: Control = $Player/Camera2D/PauseMenu
 
 func _ready() -> void:
 	infantry_spawners = $"Infantry Spawners".get_children()
@@ -10,6 +11,10 @@ func _ready() -> void:
 	$Boss.connect("player_detected", move_hp_bar)
 	
 	origpos = Vector2(boss_hp_bar.position)
+	
+	pause_menu.hide()
+	pause_menu.get_child(2).get_child(0).connect("pressed", unpause)
+	pause_menu.get_child(2).get_child(1).connect("pressed", quit)
 
 var origpos: Vector2
 var targpos = Vector2(0, -290)
@@ -30,3 +35,19 @@ func _on_infarty_timer_timeout() -> void:
 		var s = infantry.instantiate()
 		s.global_transform = infantry_spawners.pick_random().global_transform
 		get_tree().root.add_child(s)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		pause()
+
+func pause():
+	get_tree().paused = true
+	$Player/Camera2D/PauseMenu.show()
+
+func unpause():
+	get_tree().paused = false
+	$Player/Camera2D/PauseMenu.hide()
+
+func quit():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

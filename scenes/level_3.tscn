@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc31c2dtt5oun"]
+[gd_scene load_steps=9 format=3 uid="uid://cc31c2dtt5oun"]
 
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_gb2g1"]
 [ext_resource type="Script" path="res://scripts/level_3.gd" id="1_okic7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bym6dwufhuqxr" path="res://scenes/boss.tscn" id="4_6rlnk"]
 [ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="6_nohsu"]
 [ext_resource type="PackedScene" uid="uid://didw4nnd1iu55" path="res://scenes/boss_hp_bar.tscn" id="7_ahg7a"]
+[ext_resource type="PackedScene" uid="uid://cwfl1o45t8ds6" path="res://scenes/pause_menu.tscn" id="8_bruu7"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_okic7")
@@ -794,6 +795,9 @@ limit_bottom = 0
 
 [node name="Boss HP Bar" parent="Player/Camera2D" instance=ExtResource("7_ahg7a")]
 position = Vector2(0, -350)
+
+[node name="PauseMenu" parent="Player/Camera2D" instance=ExtResource("8_bruu7")]
+z_index = 2
 
 [node name="Boss" parent="." instance=ExtResource("4_6rlnk")]
 position = Vector2(2074, -2042)
