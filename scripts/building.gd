@@ -7,6 +7,8 @@ var explosion_scene: PackedScene = preload("res://scenes/ExplosionMedium.tscn")
 
 @export var allsprites: Array[Texture] = []
 
+signal destroyed
+
 func _ready() -> void:
 	sprite.texture = allsprites.pick_random()
 	
@@ -16,4 +18,5 @@ func destroy() -> void:
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position
 		get_tree().root.get_child(0).add_child(explosion)
+	destroyed.emit()
 	queue_free()

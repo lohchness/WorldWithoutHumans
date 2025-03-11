@@ -29,7 +29,26 @@ limit_right = 4700
 limit_bottom = 0
 
 [node name="PauseMenu" parent="Player/Camera2D2" instance=ExtResource("4_w7iuq")]
+visible = false
 z_index = 2
+
+[node name="Title" type="Label" parent="Player/Camera2D2"]
+offset_left = -430.0
+offset_top = -135.0
+offset_right = -197.0
+offset_bottom = -107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "RESISTANSE"
+
+[node name="Objective1" type="Label" parent="Player/Camera2D2"]
+offset_left = -413.0
+offset_top = -104.0
+offset_right = -180.0
+offset_bottom = -76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Destroy 0/150 Buildings!"
 
 [node name="Buildings" type="Node2D" parent="."]
 
