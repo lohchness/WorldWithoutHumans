@@ -792,6 +792,9 @@ limit_top = -3500
 limit_right = 3750
 limit_bottom = 0
 
+[node name="Boss HP Bar" parent="Player/Camera2D" instance=ExtResource("7_ahg7a")]
+position = Vector2(0, -350)
+
 [node name="Boss" parent="." instance=ExtResource("4_6rlnk")]
 position = Vector2(2074, -2042)
 
@@ -821,8 +824,5 @@ position = Vector2(1149, -3008)
 
 [node name="Artillery4" parent="." instance=ExtResource("6_nohsu")]
 position = Vector2(2848, -3113)
-
-[node name="Boss HP Bar" parent="." instance=ExtResource("7_ahg7a")]
-position = Vector2(2086, -2145)
 
 [connection signal="timeout" from="InfartyTimer" to="." method="_on_infarty_timer_timeout"]
