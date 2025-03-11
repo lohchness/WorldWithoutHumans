@@ -33,7 +33,7 @@ func _on_jetfighter_trigger_body_entered(body: Node2D) -> void:
 			$"Jetfighter Timer".start()
 
 func _physics_process(delta: float) -> void:
-	if buildings_destroyed >= 10 and artillery_destroyed >= 10:
+	if buildings_destroyed >= 120 and artillery_destroyed >= 13:
 		modulate -= Color(0,0,0, 1 * delta)
 		if modulate.a <= 0:
 			get_tree().change_scene_to_file("res://scenes/level_2_complete.tscn")
