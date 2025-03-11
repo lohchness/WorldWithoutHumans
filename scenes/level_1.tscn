@@ -29,7 +29,6 @@ limit_right = 4700
 limit_bottom = 0
 
 [node name="PauseMenu" parent="Player/Camera2D2" instance=ExtResource("4_w7iuq")]
-visible = false
 z_index = 2
 
 [node name="Title" type="Label" parent="Player/Camera2D2"]

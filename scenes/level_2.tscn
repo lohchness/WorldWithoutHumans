@@ -33,7 +33,35 @@ limit_right = 4750
 limit_bottom = 0
 
 [node name="PauseMenu" parent="Player/Camera2D2" instance=ExtResource("4_omowv")]
+visible = false
 z_index = 2
+
+[node name="Title" type="Label" parent="Player/Camera2D2"]
+offset_left = -430.0
+offset_top = -135.0
+offset_right = -197.0
+offset_bottom = -107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "FORCHRESS"
+
+[node name="Objective1" type="Label" parent="Player/Camera2D2"]
+offset_left = -413.0
+offset_top = -104.0
+offset_right = -180.0
+offset_bottom = -76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Destroy 0/120 Buildings!"
+
+[node name="Objective2" type="Label" parent="Player/Camera2D2"]
+offset_left = -413.0
+offset_top = -81.0
+offset_right = -179.0
+offset_bottom = -53.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Destroy 0/13 Artillery!"
 
 [node name="Buildings" type="Node2D" parent="."]
 
@@ -201,12 +229,6 @@ position = Vector2(2993, -2729)
 
 [node name="Building55" parent="Buildings" instance=ExtResource("4_qilur")]
 position = Vector2(2879, -2608)
-
-[node name="Artillery" parent="Buildings" instance=ExtResource("3_dyjc6")]
-position = Vector2(2883, -2774)
-
-[node name="Artillery2" parent="Buildings" instance=ExtResource("3_dyjc6")]
-position = Vector2(2890, -2705)
 
 [node name="Building56" parent="Buildings" instance=ExtResource("4_qilur")]
 position = Vector2(1430, -3388)
@@ -644,6 +666,12 @@ position = Vector2(3389, -5401)
 
 [node name="Artillery23" parent="Artillery" instance=ExtResource("3_dyjc6")]
 position = Vector2(3373, -5441)
+
+[node name="Artillery24" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(2883, -2774)
+
+[node name="Artillery25" parent="Artillery" instance=ExtResource("3_dyjc6")]
+position = Vector2(2890, -2705)
 
 [node name="Infantry" type="Node2D" parent="."]
 

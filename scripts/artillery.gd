@@ -15,6 +15,8 @@ var maxattacks = 4
 var warning: PackedScene = preload("res://scenes/warning.tscn")
 var explosion_scene: PackedScene = preload("res://scenes/ExplosionMedium.tscn")
 
+signal artydestroyed
+
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 
@@ -57,4 +59,5 @@ func destroy():
 		var explosion = explosion_scene.instantiate()
 		explosion.global_position = global_position
 		get_tree().root.get_child(0).add_child(explosion)
+	artydestroyed.emit()
 	queue_free()

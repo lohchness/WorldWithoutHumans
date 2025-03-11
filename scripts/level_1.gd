@@ -21,7 +21,7 @@ func _ready() -> void:
 		i.connect("destroyed", add_building_destroyed)
 
 func _physics_process(delta: float) -> void:
-	if buildings_destroyed >= 150:
+	if buildings_destroyed >= 10:
 		modulate -= Color(0,0,0, 1 * delta)
 		if modulate.a <= 0:
 			get_tree().change_scene_to_file("res://scenes/Level1Complete.tscn")
