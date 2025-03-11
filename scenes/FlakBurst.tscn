@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://rd0pyj3xnfks"]
+[gd_scene load_steps=29 format=3 uid="uid://rd0pyj3xnfks"]
 
 [ext_resource type="Texture2D" uid="uid://cytolhk22prlt" path="res://sprites/FlakBurst1.png" id="1_v2ypd"]
 [ext_resource type="Texture2D" uid="uid://bednbkqisuvp2" path="res://sprites/FlakBurst2.png" id="2_2ybhm"]
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="3_8w6ux"]
 [ext_resource type="Texture2D" uid="uid://b4ncpinwgy56c" path="res://sprites/FlakBurst3.png" id="3_ydcax"]
+[ext_resource type="AudioStream" uid="uid://ddykm4y6cieii" path="res://sounds/boom1.wav" id="5_50ptl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m546k"]
 atlas = ExtResource("1_v2ypd")
@@ -184,4 +185,9 @@ frame = 7
 frame_progress = 1.0
 script = ExtResource("3_8w6ux")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_50ptl")
+volume_db = -10.0
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
