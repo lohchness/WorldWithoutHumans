@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://054y5p86va5t"]
+[gd_scene load_steps=25 format=3 uid="uid://054y5p86va5t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nibr2"]
 [ext_resource type="Texture2D" uid="uid://wxphq7pc633m" path="res://sprites/Ability1.png" id="2_cyhhi"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://be1bh5umr1l45" path="res://scenes/hp_bar.tscn" id="9_1x56w"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_4eeg8"]
 [ext_resource type="AudioStream" uid="uid://woboqy7xwypl" path="res://sounds/pewpewpewpewpew1.wav" id="19_tah7i"]
+[ext_resource type="AudioStream" uid="uid://drjtqixtq8x3w" path="res://sounds/chomp.wav" id="20_iraod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra6n5"]
 size = Vector2(48, 14)
@@ -271,6 +272,10 @@ texture = ExtResource("2_vo2l8")
 
 [node name="sfx_missile5" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_tah7i")
+volume_db = -10.0
+
+[node name="chomp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_iraod")
 volume_db = -10.0
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]

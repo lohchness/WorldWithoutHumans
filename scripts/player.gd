@@ -32,6 +32,7 @@ signal gameover
 
 @export var missileHotbar: Array[Sprite2D] = []
 @onready var sfx_missile_5: AudioStreamPlayer2D = $sfx_missile5
+@onready var chomp: AudioStreamPlayer2D = $chomp
 
 var laser_on_cooldown = false
 var magnet_on_cooldown = false
@@ -75,6 +76,8 @@ func _input(event: InputEvent) -> void:
 		fire_missiles()
 		sfx_missile_5.play()
 	if event.is_action_pressed("use_healing"):
+		if humans_consumed > 0:
+			chomp.play()
 		convert_humans()
 
 func damage(amount: float) -> void:
