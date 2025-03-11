@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc31c2dtt5oun"]
+[gd_scene load_steps=11 format=3 uid="uid://cc31c2dtt5oun"]
 
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_gb2g1"]
 [ext_resource type="Script" path="res://scripts/level_3.gd" id="1_okic7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="3_5nfyx"]
 [ext_resource type="PackedScene" uid="uid://bym6dwufhuqxr" path="res://scenes/boss.tscn" id="4_6rlnk"]
 [ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="6_nohsu"]
+[ext_resource type="FontFile" uid="uid://b78o1rjwtp2vo" path="res://monogram.ttf" id="7_5k3s6"]
 [ext_resource type="PackedScene" uid="uid://didw4nnd1iu55" path="res://scenes/boss_hp_bar.tscn" id="7_ahg7a"]
 [ext_resource type="PackedScene" uid="uid://cwfl1o45t8ds6" path="res://scenes/pause_menu.tscn" id="8_bruu7"]
 [ext_resource type="PackedScene" uid="uid://c747frw0n8yce" path="res://scenes/infantry.tscn" id="9_0a1cm"]
@@ -808,7 +809,8 @@ offset_top = -135.0
 offset_right = -197.0
 offset_bottom = -107.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("7_5k3s6")
+theme_override_font_sizes/font_size = 45
 text = "LAST STAND"
 
 [node name="Objective1" type="Label" parent="Player/Camera2D"]
@@ -817,7 +819,8 @@ offset_top = -104.0
 offset_right = -180.0
 offset_bottom = -76.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("7_5k3s6")
+theme_override_font_sizes/font_size = 45
 text = "???"
 
 [node name="Boss" parent="." instance=ExtResource("4_6rlnk")]
