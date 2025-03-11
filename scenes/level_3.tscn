@@ -795,9 +795,10 @@ limit_right = 3750
 limit_bottom = 0
 
 [node name="Boss HP Bar" parent="Player/Camera2D" instance=ExtResource("7_ahg7a")]
-position = Vector2(0, -350)
+position = Vector2(0, -273)
 
 [node name="PauseMenu" parent="Player/Camera2D" instance=ExtResource("8_bruu7")]
+visible = false
 z_index = 2
 
 [node name="Boss" parent="." instance=ExtResource("4_6rlnk")]

@@ -4,6 +4,9 @@ var infantry_spawners: Array
 @onready var infantry = preload("res://scenes/infantry.tscn")
 @onready var boss_hp_bar: BossHPBar = $"Player/Camera2D/Boss HP Bar"
 @onready var pause_menu: Control = $Player/Camera2D/PauseMenu
+@onready var boss: CharacterBody2D = $Boss
+
+var bossdead = false
 
 func _ready() -> void:
 	infantry_spawners = $"Infantry Spawners".get_children()
@@ -15,6 +18,7 @@ func _ready() -> void:
 	pause_menu.hide()
 	pause_menu.get_child(2).get_child(0).connect("pressed", unpause)
 	pause_menu.get_child(2).get_child(1).connect("pressed", quit)
+	boss.connect("dead", on_boss_death)
 
 var origpos: Vector2
 var targpos = Vector2(0, -290)
@@ -22,7 +26,13 @@ var healthon = false
 
 func _physics_process(delta: float) -> void:
 	if healthon:
+		print("hi")
 		boss_hp_bar.position = lerp(boss_hp_bar.position, targpos, 5 * delta)
+	
+	if bossdead:
+		modulate -= Color(0,0,0, 0.3 * delta)
+		if modulate.a <= 0:
+			get_tree().change_scene_to_file("res://scenes/level_3_complete.tscn")
 
 func move_hp_bar():
 	#targpos = origpos + Vector2(0, 63)
@@ -51,3 +61,6 @@ func unpause():
 func quit():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func on_boss_death():
+	bossdead = true

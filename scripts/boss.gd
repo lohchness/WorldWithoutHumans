@@ -14,8 +14,8 @@ var speed: float
 var accel: float
 
 # Sweet spot 400
-var health: float = 400.0
-var max_health: float = 400.0
+var health: float = 50.0
+var max_health: float = 50.0
 var laser_damage = 30
 
 @onready var phases_sc: StateChart = $PhaseStateChart
@@ -44,6 +44,7 @@ const FLAK_BURST = preload("res://scenes/FlakBurst.tscn")
 
 var immune = true
 signal player_detected
+signal dead
 
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
@@ -93,6 +94,7 @@ func damage(dmg):
 		t.global_position = global_position
 		get_tree().root.get_child(0).add_child(t)
 		
+		dead.emit()
 		queue_free()
 		
 	
