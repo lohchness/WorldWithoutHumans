@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc31c2dtt5oun"]
+[gd_scene load_steps=8 format=3 uid="uid://cc31c2dtt5oun"]
 
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_gb2g1"]
 [ext_resource type="Script" path="res://scripts/level_3.gd" id="1_okic7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://054y5p86va5t" path="res://scenes/player.tscn" id="3_5nfyx"]
 [ext_resource type="PackedScene" uid="uid://bym6dwufhuqxr" path="res://scenes/boss.tscn" id="4_6rlnk"]
 [ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="6_nohsu"]
+[ext_resource type="PackedScene" uid="uid://didw4nnd1iu55" path="res://scenes/boss_hp_bar.tscn" id="7_ahg7a"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_okic7")
@@ -820,5 +821,8 @@ position = Vector2(1149, -3008)
 
 [node name="Artillery4" parent="." instance=ExtResource("6_nohsu")]
 position = Vector2(2848, -3113)
+
+[node name="Boss HP Bar" parent="." instance=ExtResource("7_ahg7a")]
+position = Vector2(2086, -2145)
 
 [connection signal="timeout" from="InfartyTimer" to="." method="_on_infarty_timer_timeout"]

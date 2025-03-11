@@ -61,8 +61,12 @@ func _physics_process(delta: float) -> void:
 		left_arm.flip_h = true
 		face.flip_h = true
 
+signal health_changed(new_health: float)
+
 func damage(dmg):
-	print("Boss damaged for " + str(dmg) + " damage")
+	health -= dmg
+	print(health)
+	health_changed.emit(health/100.0)
 
 ## PHASE 0
 
