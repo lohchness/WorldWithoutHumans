@@ -29,6 +29,12 @@ var target_acquired = false
 
 @onready var buildingdestroy = $Areas/BuildingDestroy
 
+@onready var right_arm: Sprite2D = $"Body Sprites/Right Arm"
+@onready var head: Sprite2D = $"Body Sprites/Head"
+@onready var torso_and_legs: Sprite2D = $"Body Sprites/Torso and Legs"
+@onready var left_arm: Sprite2D = $"Body Sprites/Left Arm"
+@onready var face: Sprite2D = $"Body Sprites/Face"
+
 func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 	speed = PHASE_1_SPEED
@@ -41,6 +47,19 @@ func _physics_process(delta: float) -> void:
 	var areas = buildingdestroy.get_overlapping_areas()
 	for i in areas:
 		i.destroy()
+	
+	if global_position.direction_to(target.global_position).x > 0:
+		right_arm.flip_h = false
+		head.flip_h = false
+		torso_and_legs.flip_h = false
+		left_arm.flip_h = false
+		face.flip_h = false
+	else:
+		right_arm.flip_h = true
+		head.flip_h = true
+		torso_and_legs.flip_h = true
+		left_arm.flip_h = true
+		face.flip_h = true
 
 func damage(dmg):
 	print("Boss damaged for " + str(dmg) + " damage")
@@ -76,6 +95,7 @@ func _on_walk_state_physics_processing(delta: float) -> void:
 	p1_attack_timer += delta
 	if p1_attack_timer >= p1_attack_cooldown:
 		phases_sc.send_event("on_attack")
+	
 
 ## Stationary only serves to "prime" the attack
 func _on_stationary_state_physics_processing(delta: float) -> void:
