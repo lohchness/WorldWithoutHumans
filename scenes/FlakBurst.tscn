@@ -178,16 +178,16 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="FlakBurst" type="AnimatedSprite2D"]
+[node name="FlakBurst" type="AnimatedSprite2D" node_paths=PackedStringArray("players")]
 sprite_frames = SubResource("SpriteFrames_ox6hl")
 animation = &"FlakBurst3"
 frame = 7
 frame_progress = 1.0
 script = ExtResource("3_8w6ux")
+players = [NodePath("AudioStreamPlayer2D")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_50ptl")
 volume_db = -10.0
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
