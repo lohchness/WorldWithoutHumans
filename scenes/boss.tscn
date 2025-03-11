@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bym6dwufhuqxr"]
+[gd_scene load_steps=20 format=3 uid="uid://bym6dwufhuqxr"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_wjuuk"]
 [ext_resource type="Texture2D" uid="uid://3onsnrnb7xe4" path="res://sprites/Boss/Head.png" id="2_sydfv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b2fqffsvy5wds" path="res://sprites/Boss/LaserWindup.png" id="7_aljyp"]
 [ext_resource type="Texture2D" uid="uid://bhq32k8rwgj84" path="res://sprites/Boss/LaserActual.png" id="8_wgtvn"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="13_ctt1c"]
+[ext_resource type="AudioStream" uid="uid://s1om4sy2flty" path="res://sounds/bosslaser.wav" id="14_vajwq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfav3"]
 radius = 166.027
@@ -542,6 +543,9 @@ script = ExtResource("5_vdsfw")
 script = ExtResource("6_u1uje")
 to = NodePath("../../P3AttackIdle")
 delay_in_seconds = "1.0"
+
+[node name="Lasersound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_vajwq")
 
 [connection signal="body_entered" from="Areas/Player Detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_entered" from="LaserBeam/P2_LaserHurtbox" to="." method="_on_p_2_laser_hurtbox_body_entered"]

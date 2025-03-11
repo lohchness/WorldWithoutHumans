@@ -175,6 +175,8 @@ func _on_p_2_attack_actual_state_entered() -> void:
 	p2_laser_actual.visible = true
 	
 	laserarea.monitoring = true
+	
+	$Lasersound.play()
 
 func _on_p_2_attack_actual_state_physics_processing(delta: float) -> void:
 	modulate_timer += delta
@@ -304,6 +306,8 @@ func _on_p_3_attack_actual_state_entered() -> void:
 	p3_laser_actual.visible = true
 	
 	p3_laserarea.monitoring = true
+	
+	$Lasersound.play()
 
 func _on_p_3_attack_actual_state_physics_processing(delta: float) -> void:
 	modulate_timer += delta
