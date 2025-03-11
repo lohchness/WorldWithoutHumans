@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cc31c2dtt5oun"]
+[gd_scene load_steps=10 format=3 uid="uid://cc31c2dtt5oun"]
 
 [ext_resource type="Texture2D" uid="uid://cy32khn6xul5w" path="res://sprites/BackgroundPaper.png" id="1_gb2g1"]
 [ext_resource type="Script" path="res://scripts/level_3.gd" id="1_okic7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://csoi24pi2yds" path="res://scenes/artillery.tscn" id="6_nohsu"]
 [ext_resource type="PackedScene" uid="uid://didw4nnd1iu55" path="res://scenes/boss_hp_bar.tscn" id="7_ahg7a"]
 [ext_resource type="PackedScene" uid="uid://cwfl1o45t8ds6" path="res://scenes/pause_menu.tscn" id="8_bruu7"]
+[ext_resource type="PackedScene" uid="uid://c747frw0n8yce" path="res://scenes/infantry.tscn" id="9_0a1cm"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_okic7")
@@ -848,5 +849,68 @@ position = Vector2(1149, -3008)
 
 [node name="Artillery4" parent="." instance=ExtResource("6_nohsu")]
 position = Vector2(2848, -3113)
+
+[node name="Infantry" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1921, -979)
+
+[node name="Infantry2" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1921, -850)
+
+[node name="Infantry3" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2148, -1014)
+
+[node name="Infantry4" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2085, -901)
+
+[node name="Infantry5" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2010, -952)
+
+[node name="Infantry6" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2012, -757)
+
+[node name="Infantry7" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1844, -762)
+
+[node name="Infantry8" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1907, -708)
+
+[node name="Infantry9" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2255, -724)
+
+[node name="Infantry10" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2136, -712)
+
+[node name="Infantry11" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2182, -862)
+
+[node name="Infantry12" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1867, -1087)
+
+[node name="Infantry13" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1952, -1098)
+
+[node name="Infantry14" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2043, -1107)
+
+[node name="Infantry15" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2161, -1109)
+
+[node name="Infantry16" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1912, -1241)
+
+[node name="Infantry17" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2027, -1224)
+
+[node name="Infantry18" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2128, -1228)
+
+[node name="Infantry19" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(1823, -1342)
+
+[node name="Infantry20" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2032, -1343)
+
+[node name="Infantry21" parent="." instance=ExtResource("9_0a1cm")]
+position = Vector2(2205, -1371)
 
 [connection signal="timeout" from="InfartyTimer" to="." method="_on_infarty_timer_timeout"]

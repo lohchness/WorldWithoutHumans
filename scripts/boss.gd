@@ -78,7 +78,10 @@ func damage(dmg):
 	if immune:
 		return
 	
-	health -= dmg
+	if health/max_health >= .10:
+		health -= dmg/1.5
+	else:
+		health -= dmg
 	
 	if health <= 0:
 		health = 0
