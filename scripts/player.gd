@@ -30,7 +30,7 @@ signal gameover
 @onready var magnet_finish_attack_transition: Transition = $"WeaponStateChart/Weapons/A2/A2 Attacking/Transition"
 @onready var magnet_cooldown_finish_transition: Transition = $"WeaponStateChart/Weapons/A2/A2 Cooldown/Transition"
 
-@export var missileHotbar: Array[Sprite2D] = []
+@onready var missileHotbar = $Abilities/Missiles.get_children()
 @onready var sfx_missile_5: AudioStreamPlayer2D = $sfx_missile5
 @onready var chomp: AudioStreamPlayer2D = $chomp
 
@@ -38,6 +38,8 @@ var laser_on_cooldown = false
 var magnet_on_cooldown = false
 
 var humans_consumed: int = 0
+
+var playerdead = false
 
 func _ready() -> void:
 	magnet_area.monitoring = false
@@ -66,6 +68,12 @@ func _physics_process(delta: float) -> void:
 			missileHotbar[i].visible = true
 		else:
 			missileHotbar[i].visible = false
+	
+	if playerdead:
+		var a = get_tree().root.get_child(0)
+		a.modulate -= Color(0,0,0, 1 * delta)
+		if a.modulate.a <= 0:
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_laser"):
@@ -82,10 +90,15 @@ func _input(event: InputEvent) -> void:
 		convert_humans()
 
 func damage(amount: float) -> void:
+	
 	if health/maxhealth >= .10:
 		health -= amount/1.5
 	else:
 		health -= amount
+	
+	if health <= 0:
+		health = 0
+		playerdead = true
 	
 	healthbar.update_healthpercent(health / maxhealth)
 	
