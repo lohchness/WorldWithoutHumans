@@ -12,6 +12,10 @@ signal hit_player
 func _ready() -> void:
 	texture = corpsesprites.pick_random()
 	target = get_tree().get_first_node_in_group("Player")
+	if randi_range(0, 1):
+		$AudioStreamPlayer2D.play()
+	else:
+		$AudioStreamPlayer2D2.play()
 	
 	speedmult = randf_range(1, 3)
 	connect("hit_player", Callable(target, "picked_up_corpse"))
