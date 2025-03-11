@@ -273,6 +273,9 @@ texture = ExtResource("2_vo2l8")
 stream = ExtResource("19_tah7i")
 volume_db = -10.0
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [connection signal="timeout" from="Abilities/Timers/Ability1Cooldown" to="." method="_on_ability_1_cooldown_timeout"]
 [connection signal="timeout" from="Abilities/Timers/Ability2Cooldown" to="." method="_on_ability_2_cooldown_timeout"]
 [connection signal="timeout" from="Abilities/Missiles/MissileCountdown" to="." method="_on_missile_countdown_timeout"]
