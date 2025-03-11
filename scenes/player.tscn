@@ -56,25 +56,26 @@ shape = SubResource("CircleShape2D_d7a0x")
 
 [node name="Ability1" type="Sprite2D" parent="Abilities/Icons"]
 z_index = 1
-position = Vector2(-126, 209)
+position = Vector2(-126, 193)
 texture = ExtResource("2_cyhhi")
 
 [node name="Ability2" type="Sprite2D" parent="Abilities/Icons"]
 z_index = 1
-position = Vector2(-44, 209)
+position = Vector2(-44, 193)
 texture = ExtResource("3_nqr3j")
 
 [node name="Ability3" type="Sprite2D" parent="Abilities/Icons"]
 z_index = 1
-position = Vector2(42, 209)
+position = Vector2(42, 193)
 texture = ExtResource("4_508p0")
 
 [node name="Ability4" type="Sprite2D" parent="Abilities/Icons"]
 z_index = 1
-position = Vector2(124, 209)
+position = Vector2(124, 193)
 texture = ExtResource("5_0fyxd")
 
 [node name="Cooldown" type="Node2D" parent="Abilities/Icons"]
+position = Vector2(0, -16)
 
 [node name="Ability1TimerBackground" type="Sprite2D" parent="Abilities/Icons/Cooldown"]
 visible = false
@@ -112,6 +113,46 @@ theme_override_fonts/font = ExtResource("7_nkhw4")
 theme_override_font_sizes/font_size = 80
 text = "4"
 
+[node name="Label" type="Label" parent="Abilities/Icons"]
+offset_left = -133.0
+offset_top = 223.0
+offset_right = -93.0
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_nkhw4")
+theme_override_font_sizes/font_size = 26
+text = "Z"
+
+[node name="Label2" type="Label" parent="Abilities/Icons"]
+offset_left = -49.0
+offset_top = 223.0
+offset_right = -9.0
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_nkhw4")
+theme_override_font_sizes/font_size = 26
+text = "X"
+
+[node name="Label3" type="Label" parent="Abilities/Icons"]
+offset_left = 38.0
+offset_top = 223.0
+offset_right = 78.0
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_nkhw4")
+theme_override_font_sizes/font_size = 26
+text = "C"
+
+[node name="Label4" type="Label" parent="Abilities/Icons"]
+offset_left = 120.0
+offset_top = 223.0
+offset_right = 160.0
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_nkhw4")
+theme_override_font_sizes/font_size = 26
+text = "V"
+
 [node name="Timers" type="Node2D" parent="Abilities"]
 
 [node name="Ability1Cooldown" type="Timer" parent="Abilities/Timers"]
@@ -123,42 +164,42 @@ one_shot = true
 [node name="Missiles" type="Node2D" parent="Abilities"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(16, 172)
+position = Vector2(16, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(23, 172)
+position = Vector2(23, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(30, 172)
+position = Vector2(30, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(37, 172)
+position = Vector2(37, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(44, 172)
+position = Vector2(44, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(51, 172)
+position = Vector2(51, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(58, 172)
+position = Vector2(58, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Abilities/Missiles"]
-position = Vector2(65, 172)
+position = Vector2(65, 156)
 scale = Vector2(2, 2)
 texture = ExtResource("8_l6dmt")
 
@@ -167,7 +208,7 @@ wait_time = 0.3
 autostart = true
 
 [node name="HPBar" parent="Abilities" instance=ExtResource("9_1x56w")]
-position = Vector2(0, 153)
+position = Vector2(0, 140)
 
 [node name="Marker" type="Sprite2D" parent="."]
 texture_filter = 1
