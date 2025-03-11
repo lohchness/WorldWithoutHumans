@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://onxlye734xpc"]
+
+[ext_resource type="Script" path="res://scripts/level_1_complete.gd" id="1_7tajj"]
+[ext_resource type="Texture2D" uid="uid://myknhbh3glay" path="res://sprites/UI/Level1CompleteBackground.png" id="1_mvig3"]
+[ext_resource type="Texture2D" uid="uid://b6c4lbpqcpgip" path="res://sprites/UI/NextButton.png" id="2_jx0us"]
+
+[node name="Level1Complete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7tajj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_mvig3")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 937.0
+offset_top = 510.0
+offset_right = 1128.0
+offset_bottom = 629.0
+texture_normal = ExtResource("2_jx0us")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
