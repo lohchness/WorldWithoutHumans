@@ -30,6 +30,7 @@ Building=""
 Infantry=""
 Corpse=""
 Targetable=""
+Boss=""
 
 [input]
 

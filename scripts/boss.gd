@@ -14,8 +14,8 @@ var speed: float
 var accel: float
 
 # Sweet spot 400
-var health: float = 50.0
-var max_health: float = 50.0
+var health: float = 400.0
+var max_health: float = 400.0
 var laser_damage = 30
 
 @onready var phases_sc: StateChart = $PhaseStateChart

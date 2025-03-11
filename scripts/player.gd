@@ -82,8 +82,10 @@ func _input(event: InputEvent) -> void:
 		convert_humans()
 
 func damage(amount: float) -> void:
-	health -= amount
-	print("Took " + str(amount) + " damage. Health remaining: " + str(health))
+	if health/maxhealth >= .10:
+		health -= amount/1.5
+	else:
+		health -= amount
 	
 	healthbar.update_healthpercent(health / maxhealth)
 	
@@ -106,6 +108,12 @@ func _on_a_1_attacking_state_physics_processing(delta: float) -> void:
 	var areas = $Marker/Area2D.get_overlapping_areas()
 	for i in areas:
 		i.destroy()
+	
+	var bodies = $Marker/Area2D2.get_overlapping_bodies()
+	for i in bodies:
+		if i.is_in_group("Boss"):
+			i.damage(13*delta)
+	
 
 @onready var magnet_area = $MagnetWeapon/MagnetArea
 @onready var magnet_sprite = $MagnetWeapon/MagnetSprite

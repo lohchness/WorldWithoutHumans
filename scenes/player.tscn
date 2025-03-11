@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://054y5p86va5t"]
+[gd_scene load_steps=27 format=3 uid="uid://054y5p86va5t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nibr2"]
 [ext_resource type="Texture2D" uid="uid://wxphq7pc633m" path="res://sprites/Ability1.png" id="2_cyhhi"]
@@ -30,6 +30,9 @@ radius = 17.0294
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwctc"]
 size = Vector2(60, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ll31"]
+size = Vector2(64, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wwvjr"]
 radius = 140.0
@@ -179,6 +182,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker/Area2D"]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_rwctc")
+
+[node name="Area2D2" type="Area2D" parent="Marker"]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker/Area2D2"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_7ll31")
 
 [node name="MagnetWeapon" type="Node2D" parent="."]
 
