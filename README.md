@@ -1,6 +1,6 @@
 # We Were Here First
 
-Created for the CISSA x UMGMC Game Jam March 2025 in a period of 4 days.
+Created solo for the CISSA x UMGMC Game Jam March 2025 in a period of 4 days.
 
 Play the game [here](https://itch.io/jam/cissa-x-umgmc/rate/3388321)!
 
